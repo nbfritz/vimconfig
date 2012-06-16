@@ -1,7 +1,0 @@
-/bundle/*
-!/bundle/vundle
-!/bundle/vundle/*
-/tmp/backup/*
-/tmp/swap/*
-/tmp/undo/*
-
