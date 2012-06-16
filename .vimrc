@@ -161,6 +161,8 @@ MapToggle <F1> number
 MapToggle <F3> hlsearch
 map <F2> :syntax on<cr>
 
+
+nmap <silent> <F10> :BufExplorer<CR>
 nmap <silent> <F11> :TagbarToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
 nnoremap <leader>a :Ack!<space>
@@ -177,7 +179,8 @@ map <leader>s :winc s<CR>
 
 " edit this file
 map <leader>- :sp ~\.vim\.vimrc
-map <leader>= :source ~\.vim\.vimrc
+map <leader>_ :source ~\.vim\.vimrc
+map <leader>= :sp ~\.vim
 "}}}
 
 " vim:fdm=marker:ft=vim
