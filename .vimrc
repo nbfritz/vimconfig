@@ -176,8 +176,8 @@ map <leader>l :winc l<CR>
 map <leader>s :winc s<CR>
 
 " edit this file
-map <leader>- :sp ~\_vimrc
-map <leader>= :source ~\_vimrc
+map <leader>- :sp ~\.vim\.vimrc
+map <leader>= :source ~\.vim\.vimrc
 "}}}
 
 " vim:fdm=marker:ft=vim
