@@ -1,12 +1,18 @@
 vimconfig
 =========
 
-Place the files in the home\_folder directory at the root of your home folder.
+Checkout this repository into your home folder as the .vim folder. (Or check it out and rename it to .vim)
 
-On Windows, if an environmental variable named HOME exists, this will be used. Otherwise, check the contents of the USERPROFILE environmental variable with echo %USERPROFILE% to find your default home directory.
+On Windows the home folder is wherever the environmental variable %USERPROFILE% points, but if you manually set a %HOME% variable, it can live anywhere. This is handy for keeping unixy tool configurations out of your Windows user profile folder. It makes them more portable, too, since they're not mixed in with the Windows stuff.
 
-The \_vimrc files should be renamed .vimrc on Mac or Linux. It should exist at the root of your home folder.
+Since VIM normally looks for its startup config in the root of the home folder rather than in the .vim file, create a .vimrc file in your home folder and enter the following one line into that file to direct it to load the .vimrc file from within the .vim folder:
 
-After installing the config, you will need to install the the Envy Code R font (from http://damieng.com/creative/typography).
+    source ~/.vim/.vimrc
 
-Finally, after starting gVIM for the first time, execute BundleInstall to download and install all of the plugins.
+This lets us manage the main configuration with GIT.
+
+
+You will need the Envy Code R font from http://damieng.com/creative/typography.
+
+
+After starting gVIM for the first time, run :BundleInstall to load all of the plugins specified in the configuration. Then restart gVIM!
