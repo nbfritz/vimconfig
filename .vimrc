@@ -29,8 +29,8 @@ set mouse=a                       " enable mouse
 syntax on                         " enable syntax highlighting
 set guioptions=egmrL              " configure gui
 set hlsearch                      " enable highlighted searching
-set cmdheight=2                   " command line is two lines tall
-
+set cmdheight=1                   " command line is two lines tall
+set laststatus=2                  " always show a status line
 "}}}
 
 " ===== bundle configuration ===== {{{
