@@ -44,6 +44,7 @@ Bundle 'gmarik/vundle'
 Bundle "L9"
 
 " align on separator characters
+let g:DrChipTopLvlMenu="Plugin."
 Bundle 'tsaleh/vim-align'
 
 " automatic insertion of end statements
