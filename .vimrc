@@ -29,8 +29,6 @@ set mouse=a                       " enable mouse
 syntax on                         " enable syntax highlighting
 set guioptions=egmrL              " configure gui
 set hlsearch                      " enable highlighted searching
-set cmdheight=1                   " command line is two lines tall
-set laststatus=2                  " always show a status line
 "}}}
 
 " ===== bundle configuration ===== {{{
@@ -127,13 +125,14 @@ colo railscasts           " color scheme
 " set font in gui mode
 set gfn=Envy_Code_R:h10:cANSI
 
-
 set lines=50          " gui window height
 set co=104            " gui window width
-
-set ruler			        " show cursor position
-set showcmd		      	" display incomplete commands
-set history=50		  	" 50 lines of command line history
+set visualbell        " flash instead of beeping
+set ruler             " show cursor position
+set showcmd           " display incomplete commands
+set history=50        " 50 lines of command line history
+set cmdheight=1       " command line is two lines tall
+set laststatus=2      " always show a status line
 "}}}
 
 " ===== set default tab settings ===== {{{
