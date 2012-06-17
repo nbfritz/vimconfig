@@ -12,6 +12,7 @@ command! -nargs=+ MapToggle call MapToggle(<f-args>)
 " ===== general settings ===== {{{
 set nocompatible      " run in VIM rather than VI mode
 set cryptmethod=blowfish          " when starting with -x encrypt using blowfish
+set encoding=utf8
 
 " load in preset configuration for MS windows
 source $VIMRUNTIME/mswin.vim
@@ -117,13 +118,13 @@ let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "
 
 " beautiful status lines
 Bundle 'Lokaltog/vim-powerline'
-
+let g:Powerline_symbols = 'compatible'
 "}}}
 
 " ===== display settings ===== {{{
 colo railscasts           " color scheme
 " set font in gui mode
-set gfn=Envy_Code_R:h10:cANSI
+set gfn=Envy_Code_R:h10
 
 set lines=50          " gui window height
 set co=104            " gui window width
@@ -133,6 +134,7 @@ set showcmd           " display incomplete commands
 set history=50        " 50 lines of command line history
 set cmdheight=1       " command line is two lines tall
 set laststatus=2      " always show a status line
+set shortmess+=I      " disable the welcome screen
 "}}}
 
 " ===== set default tab settings ===== {{{
@@ -181,11 +183,6 @@ map <leader>s :winc s<CR>
 map <leader>- :sp ~\.vim\.vimrc
 map <leader>_ :source ~\.vim\.vimrc
 map <leader>= :sp ~\.vim
-
-" fix regexes (automatically inserts the very magic \v command)
-nnoremap / /\v
-cnoremap %s %s/\v
-
 "}}}
 
 " vim:fdm=marker:ft=vim
