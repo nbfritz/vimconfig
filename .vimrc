@@ -181,6 +181,11 @@ map <leader>s :winc s<CR>
 map <leader>- :sp ~\.vim\.vimrc
 map <leader>_ :source ~\.vim\.vimrc
 map <leader>= :sp ~\.vim
+
+" fix regexes (automatically inserts the very magic \v command)
+nnoremap / /\v
+cnoremap %s %s/\v
+
 "}}}
 
 " vim:fdm=marker:ft=vim
