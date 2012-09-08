@@ -119,6 +119,9 @@ let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "
 " beautiful status lines
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'compatible'
+
+" coldfusion support
+Bundle 'https://github.com/davejlong/cf-utils.vim'
 "}}}
 
 " ===== display settings ===== {{{
