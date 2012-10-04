@@ -127,11 +127,6 @@ Bundle 'https://github.com/davejlong/cf-utils.vim'
 
 " ===== display settings ===== {{{
 colo railscasts           " color scheme
-" set font in gui mode
-set gfn=Envy_Code_R:h13
-
-set lines=92          " gui window height
-set co=174            " gui window width
 set visualbell        " flash instead of beeping
 set ruler             " show cursor position
 set showcmd           " display incomplete commands
@@ -159,8 +154,17 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-autocmd VimEnter * NERDTree default
-autocmd VimEnter * wincmd p
+"}}}
+
+" ===== GUI-only setup ===== {{{
+if has("gui_running")
+  set gfn=Envy_Code_R:h13
+  set lines=92          " gui window height
+  set co=174            " gui window width
+  
+  autocmd VimEnter * NERDTree default
+  autocmd VimEnter * wincmd p
+endif
 "}}}
 
 " ===== set up custom keyboard mappings ===== {{{
@@ -169,7 +173,6 @@ let mapleader = ','
 MapToggle <F1> number
 MapToggle <F3> hlsearch
 map <F2> :syntax on<cr>
-
 
 nmap <silent> <F10> :BufExplorer<CR>
 nmap <silent> <F11> :TagbarToggle<CR>
