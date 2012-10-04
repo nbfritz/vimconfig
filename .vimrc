@@ -63,6 +63,7 @@ Bundle 'tpope/vim-unimpaired'
 
 " filesystem browser
 Bundle 'scrooloose/nerdtree' 
+let g:NERDTreeShowBookmarks=1
 
 " support for user-defined text objects
 Bundle 'kana/vim-textobj-user'
@@ -127,10 +128,10 @@ Bundle 'https://github.com/davejlong/cf-utils.vim'
 " ===== display settings ===== {{{
 colo railscasts           " color scheme
 " set font in gui mode
-set gfn=Envy_Code_R:h10
+set gfn=Envy_Code_R:h13
 
-set lines=50          " gui window height
-set co=104            " gui window width
+set lines=92          " gui window height
+set co=174            " gui window width
 set visualbell        " flash instead of beeping
 set ruler             " show cursor position
 set showcmd           " display incomplete commands
@@ -157,6 +158,9 @@ autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+
+autocmd VimEnter * NERDTree default
+autocmd VimEnter * wincmd p
 "}}}
 
 " ===== set up custom keyboard mappings ===== {{{
