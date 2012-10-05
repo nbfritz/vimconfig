@@ -156,14 +156,25 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 "}}}
 
-" ===== GUI-only setup ===== {{{
+" ===== OS-dependent setup ===== {{{
+" GUI only
 if has("gui_running")
+  autocmd VimEnter * NERDTree default
+  autocmd VimEnter * wincmd p
+endif
+
+" Mac only
+if has("gui_macvim")
   set gfn=Envy_Code_R:h13
   set lines=92          " gui window height
   set co=174            " gui window width
-  
-  autocmd VimEnter * NERDTree default
-  autocmd VimEnter * wincmd p
+endif
+
+" Windows only
+if has("gui_win32")
+  set gfn=Envy_Code_R:h10
+  set lines=36          " gui window height
+  set co=140            " gui window width
 endif
 "}}}
 
