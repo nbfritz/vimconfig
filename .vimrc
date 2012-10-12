@@ -30,94 +30,121 @@ set mouse=a                       " enable mouse
 syntax on                         " enable syntax highlighting
 set guioptions=egmrL              " configure gui
 set hlsearch                      " enable highlighted searching
+
+let mapleader = ','               " a bunch of keyboard commands use the leader character...
 "}}}
 
 " ===== bundle configuration ===== {{{
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
 " bundle management
+" ==> :help Vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 Bundle 'gmarik/vundle'
+
+" project management for vim
+" ==> :help project
+let g:proj_flags="imst"
+let g:proj_window_width=36
+Bundle 'project.tar.gz'
 
 " functions used by other plugins
 Bundle "L9"
 
 " align on separator characters
+" ==> :help align
 let g:DrChipTopLvlMenu="Plugin."
 Bundle 'tsaleh/vim-align'
 
 " automatic insertion of end statements
 Bundle 'tpope/vim-endwise'
 
-" extended . repeat command
+" extended . repeat command (now works with more plugins)
 Bundle 'tpope/vim-repeat'
 
-" increment and decrement dates w/ C-x and C-a
-Bundle 'tpope/vim-speeddating'
-
 " mass changing of wrapping tags and characters
+" ==> :help surround
 Bundle 'tpope/vim-surround'
 
 " a set of very handy pairs of actions like encodings, line shifts, etc.
+" ==> :help unimpaired
 Bundle 'tpope/vim-unimpaired'
 
 " filesystem browser
+" ==> :help nerdtree
 Bundle 'scrooloose/nerdtree' 
 let g:NERDTreeShowBookmarks=1
 
-" support for user-defined text objects
+" support for user-defined text objects (required by vim-textobj-rubyblock)
+" ==> :help textobj
 Bundle 'kana/vim-textobj-user'
 
 " more sophisticated copy and paste system with numbered registers
+" ==> :help yankring
 Bundle 'vim-scripts/YankRing.vim'
 
 " extension to the % matcher to work with more than single characters
+" ==> :help matchit
 Bundle 'mirell/vim-matchit'
 
 " awesome search tool mapped to C-p
+" ==> :help ctrlp
+let g:ctrlp_working_path_mode = 'rc'
 Bundle 'kien/ctrlp.vim'
 
 " scratch buffers with :Scratch
 Bundle 'vim-scripts/scratch.vim'
 
 " nifty commenting commands
+" ==> :help nerdcommenter
 Bundle 'scrooloose/nerdcommenter' 
 
 " easy buffer switching
+" ==> :help bufexplorer
 Bundle 'vim-scripts/bufexplorer.zip'
 
 " ruby extensions
+" ==> :help vim-ruby
 Bundle 'vim-ruby/vim-ruby'
 
 " ruby on rails extensions
+" ==> :help rails
 Bundle 'tpope/vim-rails'
 
 " text matcher for selecting ruby blocks with ar and ir
+" ==> :help rubyblock
 Bundle 'nelstrom/vim-textobj-rubyblock'
 
 " easy refactoring in ruby
+" ==> :help rubyrefactoring
 Bundle 'ecomba/vim-ruby-refactoring'
 
 " tag browser for navigating through functions/variables/etc. in a script
+" ==> :help tagbar
 Bundle 'majutsushi/tagbar'
 
 " git integration for vim
+" ==> :help fugitive
 Bundle 'tpope/vim-fugitive' 
 
 " autocompletion
+" ==> :help neocomplcache
 Bundle 'neocomplcache'
 
 " use tab for completion in visual mode
+" ==> :help supertab 
 Bundle 'SuperTab-continued.'
 
 " railscasts color scheme
 Bundle 'railscasts'
 
 " plugin to interpret and reference indentation levels (with ai, ii, aI, and iI)
+" ==> :help indent-object
 Bundle 'michaeljsmith/vim-indent-object'
 let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "markdown"]
 
 " beautiful status lines
+" ==> :help powerline
 Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'compatible'
 
@@ -159,13 +186,17 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 " ===== OS-dependent setup ===== {{{
 " GUI only
 if has("gui_running")
-  autocmd VimEnter * NERDTree default
+" To autodisplay NERDTree, enable the following two lines
+"  autocmd VimEnter * NERDTree default
+"  autocmd VimEnter * wincmd p
+" To autodisplay Project, enable the following two lines
+  autocmd VimEnter * Project
   autocmd VimEnter * wincmd p
 endif
 
 " Mac only
 if has("gui_macvim")
-  set gfn=Envy_Code_R:h13
+  set gfn=M+ 1m light:h13
   set lines=92          " gui window height
   set co=174            " gui window width
 endif
@@ -179,31 +210,24 @@ endif
 "}}}
 
 " ===== set up custom keyboard mappings ===== {{{
-let mapleader = ','
 
 MapToggle <F1> number
 MapToggle <F3> hlsearch
 map <F2> :syntax on<cr>
 
 nmap <silent> <F10> :BufExplorer<CR>
-nmap <silent> <F11> :TagbarToggle<CR>
+nmap <silent> <F11> <Plug>ToggleProject
 nmap <silent> <F12> :NERDTreeToggle<CR>
 nnoremap <leader>a :Ack!<space>
 nmap <leader>y :YRShow<cr>
-nmap <silent> <F4> :call NERDComment(0, "invert")<cr>
-nmap <silent> <F5> :Hammer<cr>
 
-" my alternates to  which is too hard to type :-)
+" my alternates to CTRL-W (which is too hard to type) :-)
 map <leader>j :winc j<CR>
 map <leader>k :winc k<CR>
 map <leader>h :winc h<CR>
 map <leader>l :winc l<CR>
 map <leader>s :winc s<CR>
 
-" edit this file
-map <leader>- :sp ~\.vim\.vimrc
-map <leader>_ :source ~\.vim\.vimrc
-map <leader>= :sp ~\.vim
 "}}}
 
 " vim:fdm=marker:ft=vim
