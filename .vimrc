@@ -7,6 +7,35 @@ function! MapToggle(key, opt)
  exec 'inoremap '.a:key." \<C-O>".cmd
 endfunction
 command! -nargs=+ MapToggle call MapToggle(<f-args>)
+
+function! ToggleFullScreenMode()
+ if &fullscreen
+  let &gfn=g:old_font
+  let &columns=g:old_columns
+  let &lines=g:old_lines
+  let &colorcolumn=g:old_colorcolumn
+  let &linebreak=g:old_linebreak
+  set nofullscreen
+ else
+  let g:old_font=&gfn
+  let g:old_columns=&columns
+  let g:old_lines=&lines
+  let g:old_colorcolumn=&colorcolumn
+  let g:old_linebreak=&linebreak
+  if has("gui_macvim")
+    set gfn=M+\ 1m\ light:h18
+  endif
+  if has("gui_win32")
+    set gfn=Envy_Code_R:h14
+  endif
+  set co=110
+  set colorcolumn=
+  set linebreak
+  set fullscreen
+ endif
+endfunction
+command! -nargs=+ FullScreenToggle call ToggleFullScreenMode()
+
 "}}}
 
 " ===== general settings ===== {{{
@@ -28,6 +57,7 @@ set backup                        " enable backup versions
 set mouse=a                       " enable mouse
 syntax on                         " enable syntax highlighting
 set guioptions=egm                " configure gui
+set fuoptions=maxvert             " configure fullscreen handling
 set hlsearch                      " enable highlighted searching
 
 let mapleader = ','               " a bunch of keyboard commands use the leader character...
@@ -149,11 +179,13 @@ let g:Powerline_symbols = 'compatible'
 
 " coldfusion support
 Bundle 'https://github.com/davejlong/cf-utils.vim'
+
 "}}}
 
 " ===== display settings ===== {{{
 colo railscasts           " color scheme
 hi NonText term=NONE gui=NONE guifg=#555555
+hi ColorColumn guibg=#333333
 hi! link LineNr NonText
 set visualbell        " flash instead of beeping
 set ruler             " show cursor position
@@ -162,6 +194,7 @@ set history=50        " 50 lines of command line history
 set cmdheight=1       " command line is two lines tall
 set laststatus=2      " always show a status line
 set shortmess+=I      " disable the welcome screen
+set colorcolumn=110   " show a vertical line at the 110 character mark
 "}}}
 
 " ===== set default tab settings ===== {{{
@@ -199,7 +232,7 @@ endif
 if has("gui_macvim")
   set gfn=M+\ 1m\ light:h13
   set lines=92          " gui window height
-  set co=174            " gui window width
+  set co=178            " gui window width
 endif
 
 " Windows only
@@ -216,8 +249,9 @@ MapToggle <F1> number
 MapToggle <F2> wrap
 MapToggle <F3> hlsearch
 
-nmap <silent> <F10> :BufExplorer<CR>
-nmap <silent> <F11> <Plug>ToggleProject
+nmap <silent> <F8> :BufExplorer<CR>
+nmap <silent> <F10> <Plug>ToggleProject
+nmap <silent> <F11> :FullScreenToggle()<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
 nnoremap <leader>a :Ack!<space>
 nmap <leader>y :YRShow<cr>
