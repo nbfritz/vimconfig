@@ -15,6 +15,7 @@ function! ToggleFullScreenMode()
   let &lines=g:old_lines
   let &colorcolumn=g:old_colorcolumn
   let &linebreak=g:old_linebreak
+  let &number=g:old_number
   set nofullscreen
  else
   let g:old_font=&gfn
@@ -22,6 +23,7 @@ function! ToggleFullScreenMode()
   let g:old_lines=&lines
   let g:old_colorcolumn=&colorcolumn
   let g:old_linebreak=&linebreak
+  let g:old_number=&number
   if has("gui_macvim")
     set gfn=M+\ 1m\ light:h18
   endif
@@ -32,6 +34,7 @@ function! ToggleFullScreenMode()
   set colorcolumn=
   set linebreak
   set fullscreen
+  set nonumber
  endif
 endfunction
 command! -nargs=+ FullScreenToggle call ToggleFullScreenMode()
