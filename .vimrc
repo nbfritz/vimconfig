@@ -213,8 +213,8 @@ endif
 " ===== set up custom keyboard mappings ===== {{{
 
 MapToggle <F1> number
+MapToggle <F2> wrap
 MapToggle <F3> hlsearch
-map <F2> :syntax on<cr>
 
 nmap <silent> <F10> :BufExplorer<CR>
 nmap <silent> <F11> <Plug>ToggleProject
