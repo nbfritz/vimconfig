@@ -12,6 +12,7 @@ command! -nargs=+ MapToggle call MapToggle(<f-args>)
 " ===== general settings ===== {{{
 set nocompatible      " run in VIM rather than VI mode
 set encoding=utf8
+set number
 
 " load in preset configuration for MS windows
 source $VIMRUNTIME/mswin.vim
@@ -152,6 +153,8 @@ Bundle 'https://github.com/davejlong/cf-utils.vim'
 
 " ===== display settings ===== {{{
 colo railscasts           " color scheme
+hi NonText term=NONE gui=NONE guifg=#555555
+hi! link LineNr NonText
 set visualbell        " flash instead of beeping
 set ruler             " show cursor position
 set showcmd           " display incomplete commands
@@ -194,7 +197,7 @@ endif
 
 " Mac only
 if has("gui_macvim")
-  set gfn=M+ 1m light:h13
+  set gfn=M+\ 1m\ light:h13
   set lines=92          " gui window height
   set co=174            " gui window width
 endif
