@@ -27,7 +27,7 @@ set noswapfile                    " no swap files
 set backup                        " enable backup versions
 set mouse=a                       " enable mouse
 syntax on                         " enable syntax highlighting
-set guioptions=egmrL              " configure gui
+set guioptions=egm                " configure gui
 set hlsearch                      " enable highlighted searching
 
 let mapleader = ','               " a bunch of keyboard commands use the leader character...
