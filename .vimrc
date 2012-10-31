@@ -11,7 +11,6 @@ command! -nargs=+ MapToggle call MapToggle(<f-args>)
 
 " ===== general settings ===== {{{
 set nocompatible      " run in VIM rather than VI mode
-set cryptmethod=blowfish          " when starting with -x encrypt using blowfish
 set encoding=utf8
 
 " load in preset configuration for MS windows
@@ -21,7 +20,6 @@ behave mswin
 " enable backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-set undodir=~/.vim/tmp/undo//     " locate undo files
 set backupdir=~/.vim/tmp/backup// " locate backups
 set directory=~/.vim/tmp/swap//   " locate swap files
 set noswapfile                    " no swap files 
