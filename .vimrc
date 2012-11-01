@@ -37,7 +37,10 @@ function! ToggleFullScreenMode()
   set nonumber
  endif
 endfunction
-command! -nargs=+ FullScreenToggle call ToggleFullScreenMode()
+command! FullScreenToggle call ToggleFullScreenMode()
+
+command! SettingsEdit :vi $MYVIMRC
+command! SettingsReload :source $MYVIMRC
 
 "}}}
 
@@ -170,6 +173,9 @@ Bundle 'SuperTab-continued.'
 " railscasts color scheme
 Bundle 'railscasts'
 
+" markdown support
+Bundle 'Markdown'
+
 " plugin to interpret and reference indentation levels (with ai, ii, aI, and iI)
 " ==> :help indent-object
 Bundle 'michaeljsmith/vim-indent-object'
@@ -254,7 +260,7 @@ MapToggle <F3> hlsearch
 
 nmap <silent> <F8> :BufExplorer<CR>
 nmap <silent> <F10> <Plug>ToggleProject
-nmap <silent> <F11> :FullScreenToggle()<CR>
+nmap <silent> <F11> :FullScreenToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
 nnoremap <leader>a :Ack!<space>
 nmap <leader>y :YRShow<cr>
