@@ -62,8 +62,6 @@ set noswapfile                    " no swap files
 set backup                        " enable backup versions
 set mouse=a                       " enable mouse
 syntax on                         " enable syntax highlighting
-set guioptions=egm                " configure gui
-set fuoptions=maxvert             " configure fullscreen handling
 set hlsearch                      " enable highlighted searching
 
 let mapleader = ','               " a bunch of keyboard commands use the leader character...
@@ -237,6 +235,8 @@ if has("gui_running")
 " To autodisplay Project, enable the following two lines
   autocmd VimEnter * Project
   autocmd VimEnter * wincmd p
+  set guioptions=egm                " configure gui
+  set fuoptions=maxvert             " configure fullscreen handling
 endif
 
 " Mac only
