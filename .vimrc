@@ -258,15 +258,13 @@ endif
 
 " ===== set up custom keyboard mappings ===== {{{
 
-MapToggle <F1> number
-MapToggle <F2> wrap
+MapToggle <F2> number
+MapToggle <F4> wrap
 MapToggle <F3> hlsearch
 
-nmap <silent> <F8> :BufExplorer<CR>
 nmap <silent> <F10> <Plug>ToggleProject
 nmap <silent> <F11> :FullScreenToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
-nnoremap <leader>a :Ack!<space>
 nmap <leader>y :YRShow<cr>
 
 " my alternates to CTRL-W (which is too hard to type) :-)
@@ -274,7 +272,6 @@ map <leader>j :winc j<CR>
 map <leader>k :winc k<CR>
 map <leader>h :winc h<CR>
 map <leader>l :winc l<CR>
-map <leader>s :winc s<CR>
 
 "}}}
 
