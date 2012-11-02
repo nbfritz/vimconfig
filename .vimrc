@@ -41,6 +41,8 @@ command! FullScreenToggle call ToggleFullScreenMode()
 
 command! SettingsEdit :vi $MYVIMRC
 command! SettingsReload :source $MYVIMRC
+command! NotesEdit :vi +set\ modifiable ~/.vim/doc/nfnotes.txt
+command! NotesReload :helptags ~/.vim/doc
 
 "}}}
 
