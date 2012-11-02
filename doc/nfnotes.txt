@@ -1,0 +1,47 @@
+*nfnotes.txt*	For Vim version 7.3	Last change: 2012 November 2
+
+Read the |help-writing| help page for more information on help file formatting.
+
+==============================================================================
+Keyboard Shortcuts                                      *nfkeys* 
+
+Function Keys~
+<F2>                    toggle line numbers
+<F3>                    toggle highlighted search
+<F4>                    toggle line wrap
+<F10>                   toggle project pane
+<F11>                   toggle distraction-free fullscreen mode
+<F12>                   toggle filemanager
+
+Window Navigation~
+CTRL-w h (or ,h)        move to leftward pane
+CTRL-w j (or ,j)        move to leftward pane
+CTRL-w k (or ,k)        move to leftward pane
+CTRL-w l (or ,l)        move to leftward pane
+CTRL-w =                resize two panes to equal sizes
+
+Buffer Explorer~
+,be                     open buffer explorer in current window
+,bs                     open buffer explorer in a split
+,bv                     open buffer explorer in a vertical split
+
+Other Plugins~
+,y                      display the yankring history
+
+Folding~
+zc                      close folds
+zm                      close all folds
+zo                      open folds
+zn                      open all folds
+
+==============================================================================
+Custom Commands                                        *nfcommands* 
+
+*:SettingsEdit*            Edit the startup settings file
+*:SettingsReload*          Reload the startup settings file
+*:NotesEdit*               Edit this reference file
+*:NotesReload*             Rerun the helptags processing of this file
+
+
+
+ vim:tw=78:ts=8:ft=help:norl:

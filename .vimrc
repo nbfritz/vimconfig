@@ -134,7 +134,7 @@ Bundle 'vim-scripts/scratch.vim'
 " ==> :help nerdcommenter
 Bundle 'scrooloose/nerdcommenter' 
 
-" easy buffer switching
+" buffer switching
 " ==> :help bufexplorer
 Bundle 'vim-scripts/bufexplorer.zip'
 
@@ -161,6 +161,10 @@ Bundle 'majutsushi/tagbar'
 " git integration for vim
 " ==> :help fugitive
 Bundle 'tpope/vim-fugitive' 
+
+" svn (and others) integration for vim
+" ==> :help vcscommand
+Bundle 'vcscommand.vim'
 
 " autocompletion
 " ==> :help neocomplcache
@@ -265,7 +269,7 @@ MapToggle <F3> hlsearch
 nmap <silent> <F10> <Plug>ToggleProject
 nmap <silent> <F11> :FullScreenToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
-nmap <leader>y :YRShow<cr>
+nmap <leader>y :YRShow<CR>
 
 " my alternates to CTRL-W (which is too hard to type) :-)
 map <leader>j :winc j<CR>
