@@ -242,7 +242,6 @@ if has("gui_running")
   autocmd VimEnter * Project
   autocmd VimEnter * wincmd p
   set guioptions=egm                " configure gui
-  set fuoptions=maxvert             " configure fullscreen handling
 endif
 
 " Mac only
@@ -250,6 +249,8 @@ if has("gui_macvim")
   set gfn=M+\ 1m\ light:h13
   set lines=92          " gui window height
   set co=178            " gui window width
+  set fuoptions=maxvert " configure fullscreen handling
+  nmap <silent> <F11> :FullScreenToggle<CR>
 endif
 
 " Windows only
@@ -267,7 +268,6 @@ MapToggle <F4> wrap
 MapToggle <F3> hlsearch
 
 nmap <silent> <F10> <Plug>ToggleProject
-nmap <silent> <F11> :FullScreenToggle<CR>
 nmap <silent> <F12> :NERDTreeToggle<CR>
 nmap <leader>y :YRShow<CR>
 
