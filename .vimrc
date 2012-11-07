@@ -230,17 +230,20 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 autocmd FileType markdown set makeprg=pandoc\ %\ -o\ %:r.html\ -s
 
+autocmd FileType coldfusion,cfscript set nosmarttab
+autocmd FileType coldfusion,cfscript set noexpandtab
+
 "}}}
 
 " ===== OS-dependent setup ===== {{{
 " GUI only
 if has("gui_running")
 " To autodisplay NERDTree, enable the following two lines
-"  autocmd VimEnter * NERDTree default
-"  autocmd VimEnter * wincmd p
+  "autocmd VimEnter * NERDTree default
+  "autocmd VimEnter * wincmd p
 " To autodisplay Project, enable the following two lines
-  autocmd VimEnter * Project
-  autocmd VimEnter * wincmd p
+  "autocmd VimEnter * Project
+  "autocmd VimEnter * wincmd p
   set guioptions=egm                " configure gui
 endif
 
