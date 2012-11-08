@@ -107,8 +107,9 @@ Bundle 'tpope/vim-unimpaired'
 
 " filesystem browser
 " ==> :help nerdtree
-Bundle 'scrooloose/nerdtree' 
 let g:NERDTreeShowBookmarks=1
+let g:NERDTreeChDirMode=2
+Bundle 'scrooloose/nerdtree' 
 
 " support for user-defined text objects (required by vim-textobj-rubyblock)
 " ==> :help textobj
@@ -124,7 +125,10 @@ Bundle 'mirell/vim-matchit'
 
 " awesome search tool mapped to C-p
 " ==> :help ctrlp
-let g:ctrlp_working_path_mode = 'rc'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = '\.class$'
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_cmd = 'CtrlP getcwd()'
 Bundle 'kien/ctrlp.vim'
 
 " scratch buffers with :Scratch
