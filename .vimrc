@@ -44,6 +44,8 @@ command! SettingsReload :source $MYVIMRC
 command! NotesEdit :vi +set\ modifiable ~/.vim/doc/nfnotes.txt
 command! NotesReload :helptags ~/.vim/doc
 
+command! StripCRs :%s/\r//g
+
 "}}}
 
 " ===== general settings ===== {{{
@@ -117,7 +119,7 @@ Bundle 'kana/vim-textobj-user'
 
 " more sophisticated copy and paste system with numbered registers
 " ==> :help yankring
-Bundle 'vim-scripts/YankRing.vim'
+"Bundle 'vim-scripts/YankRing.vim'
 
 " extension to the % matcher to work with more than single characters
 " ==> :help matchit
