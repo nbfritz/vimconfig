@@ -199,6 +199,10 @@ let g:Powerline_symbols = 'compatible'
 " coldfusion support
 Bundle 'https://github.com/davejlong/cf-utils.vim'
 
+" mark indicators
+let g:showmarks_enable=0
+Bundle 'ShowMarks'
+
 "}}}
 
 " ===== display settings ===== {{{
@@ -239,6 +243,9 @@ autocmd FileType markdown set makeprg=pandoc\ %\ -o\ %:r.html\ -s
 autocmd FileType coldfusion,cfscript set nosmarttab
 autocmd FileType coldfusion,cfscript set noexpandtab
 
+" automatically fold comments in ruby
+autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~'^\\s*#' | exe "normal zM``"
+
 "}}}
 
 " ===== OS-dependent setup ===== {{{
@@ -275,6 +282,7 @@ endif
 MapToggle <F2> number
 MapToggle <F4> wrap
 MapToggle <F3> hlsearch
+nmap <silent> <F5> :ShowMarksToggle<CR>
 
 nmap <silent> <F10> <Plug>ToggleProject
 nmap <silent> <F12> :NERDTreeToggle<CR>
