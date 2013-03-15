@@ -262,9 +262,9 @@ endif
 
 " Mac only
 if has("gui_macvim")
-  set gfn=M+\ 1m\ light:h13
-  set lines=92          " gui window height
-  set co=178            " gui window width
+  set gfn=M+\ 1m\ Light\ 12 
+  set lines=34          " gui window height
+  set co=199            " gui window width
   set fuoptions=maxvert " configure fullscreen handling
   nmap <silent> <F11> :FullScreenToggle<CR>
 endif
@@ -274,6 +274,13 @@ if has("gui_win32")
   set gfn=Envy_Code_R:h10
   set lines=36          " gui window height
   set co=140            " gui window width
+endif
+
+" Linux only
+if has("X11")
+  set gfn=M+\ 1m\ Medium\ 12
+  set lines=92          " gui window height
+  set co=178            " gui window width
 endif
 "}}}
 
