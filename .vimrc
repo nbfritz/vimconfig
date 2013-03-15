@@ -123,7 +123,7 @@ Bundle 'kana/vim-textobj-user'
 
 " extension to the % matcher to work with more than single characters
 " ==> :help matchit
-Bundle 'mirell/vim-matchit'
+Bundle 'edsono/vim-matchit'
 
 " awesome search tool mapped to C-p
 " ==> :help ctrlp
@@ -202,6 +202,14 @@ Bundle 'https://github.com/davejlong/cf-utils.vim'
 " mark indicators
 let g:showmarks_enable=0
 Bundle 'ShowMarks'
+
+" addons required by snippets'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+
+" snippets
+" ==> :help snipMate
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/snipmate-snippets'
 
 "}}}
 
