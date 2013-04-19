@@ -238,7 +238,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 autocmd FileType markdown set makeprg=pandoc\ %\ -o\ %:r.html\ -s
-autocmd FileType markdown call EnableTextWrapMode()
+autocmd FileType markdown call s:EnableTextWrapMode()
 
 autocmd FileType coldfusion,cfscript set nosmarttab
 autocmd FileType coldfusion,cfscript set noexpandtab
