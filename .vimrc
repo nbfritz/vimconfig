@@ -6,37 +6,7 @@ function! s:MapToggle(key, opt)
  exec 'nnoremap '.a:key.' '.cmd
  exec 'inoremap '.a:key." \<C-O>".cmd
 endfunction
-
-function! s:ToggleFullScreenMode()
- if &fullscreen
-  let &gfn=g:old_font
-  let &columns=g:old_columns
-  let &lines=g:old_lines
-  let &colorcolumn=g:old_colorcolumn
-  let &linebreak=g:old_linebreak
-  let &number=g:old_number
-  set nofullscreen
- else
-  let g:old_font=&gfn
-  let g:old_columns=&columns
-  let g:old_lines=&lines
-  let g:old_colorcolumn=&colorcolumn
-  let g:old_linebreak=&linebreak
-  let g:old_number=&number
-  if has("gui_macvim")
-    set gfn=M+\ 1m\ light:h18
-  endif
-  if has("gui_win32")
-    set gfn=Envy_Code_R:h14
-  endif
-  set co=110
-  set colorcolumn=
-  set linebreak
-  set fullscreen
-  set nonumber
- endif
-endfunction
-command! FullScreenToggle call s:ToggleFullScreenMode()
+command! -nargs=+ MapToggle call s:MapToggle(<f-args>)
 
 function! s:EnableTextWrapMode()
   set wrap
@@ -296,6 +266,37 @@ if has("gui_macvim")
   set lines=92          " gui window height
   set co=178            " gui window width
   set fuoptions=maxvert " configure fullscreen handling
+  
+  function! s:ToggleFullScreenMode()
+   if &fullscreen
+    let &gfn=g:old_font
+    let &columns=g:old_columns
+    let &lines=g:old_lines
+    let &colorcolumn=g:old_colorcolumn
+    let &linebreak=g:old_linebreak
+    let &number=g:old_number
+    set nofullscreen
+   else
+    let g:old_font=&gfn
+    let g:old_columns=&columns
+    let g:old_lines=&lines
+    let g:old_colorcolumn=&colorcolumn
+    let g:old_linebreak=&linebreak
+    let g:old_number=&number
+    if has("gui_macvim")
+      set gfn=M+\ 1m\ light:h18
+    endif
+    if has("gui_win32")
+      set gfn=Envy_Code_R:h14
+    endif
+    set co=110
+    set colorcolumn=
+    set linebreak
+    set fullscreen
+    set nonumber
+   endif
+  endfunction
+  command! FullScreenToggle call s:ToggleFullScreenMode()
   nmap <silent> <F11> :FullScreenToggle<CR>
 endif
 
@@ -320,9 +321,9 @@ endif
 "unmap <leader>fc
 "unmap <leader>hs
 
-s:MapToggle <F2> number
-s:MapToggle <F4> wrap
-s:MapToggle <F3> hlsearch
+MapToggle <F2> number
+MapToggle <F4> wrap
+MapToggle <F3> hlsearch
 nmap <silent> <F5> :ShowMarksToggle<CR>
 
 nmap <silent> <leader>f :BuffergatorClose<CR>:NERDTreeToggle<CR>
