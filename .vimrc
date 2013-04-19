@@ -1,14 +1,13 @@
 " Remember, [zo] to open a fold. [zc] to close it. [zR] to open them all. [zM] to close them all.
 
 " ===== Functions ===== {{{
-function! MapToggle(key, opt)
+function! s:MapToggle(key, opt)
  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
  exec 'nnoremap '.a:key.' '.cmd
  exec 'inoremap '.a:key." \<C-O>".cmd
 endfunction
-command! -nargs=+ MapToggle call MapToggle(<f-args>)
 
-function! ToggleFullScreenMode()
+function! s:ToggleFullScreenMode()
  if &fullscreen
   let &gfn=g:old_font
   let &columns=g:old_columns
@@ -37,14 +36,23 @@ function! ToggleFullScreenMode()
   set nonumber
  endif
 endfunction
-command! FullScreenToggle call ToggleFullScreenMode()
+command! FullScreenToggle call s:ToggleFullScreenMode()
+
+function! s:EnableTextWrapMode()
+  set wrap
+  set linebreak
+  set textwidth=102
+  set nolist
+endfunction
+command! WrapText call s:EnableTextWrapMode()
 
 command! SettingsEdit :vi $MYVIMRC
 command! SettingsReload :source $MYVIMRC
 command! NotesEdit :vi +set\ modifiable ~/.vim/doc/nfnotes.txt
 command! NotesReload :helptags ~/.vim/doc
 
-command! StripCRs :%s/\r//g
+command! StripCarriageReturns :%s/\r//g
+command! StripTrailingSpaces :%s/\s\+$//g
 
 "}}}
 
@@ -67,6 +75,8 @@ set backup                        " enable backup versions
 set mouse=a                       " enable mouse
 syntax on                         " enable syntax highlighting
 set hlsearch                      " enable highlighted searching
+set ignorecase                    " searches are case insensitive...
+set smartcase                     " unless an upper case character is sought
 
 let mapleader = ','               " a bunch of keyboard commands use the leader character...
 "}}}
@@ -111,6 +121,8 @@ Bundle 'tpope/vim-unimpaired'
 " ==> :help nerdtree
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2
+let g:NERDTreeWinSize=40
+let g:NERDTreeQuitOnOpen=1
 Bundle 'scrooloose/nerdtree' 
 
 " support for user-defined text objects (required by vim-textobj-rubyblock)
@@ -141,8 +153,10 @@ Bundle 'vim-scripts/scratch.vim'
 Bundle 'scrooloose/nerdcommenter' 
 
 " buffer switching
-" ==> :help bufexplorer
-Bundle 'vim-scripts/bufexplorer.zip'
+" ==> :help buffergator
+let g:buffergator_autoexpand_on_split=0
+let g:buffergator_suppress_keymaps=1
+Bundle 'Buffergator'
 
 " ruby extensions
 " ==> :help vim-ruby
@@ -206,15 +220,21 @@ Bundle 'ShowMarks'
 " addons required by snippets'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 
-" snippets
-" ==> :help snipMate
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/snipmate-snippets'
+" css coloring
+Bundle 'ap/vim-css-color'
+
+" syntax checking
+" ==> :help syntastic
+Bundle 'Syntastic'
+
+" multiple cursors
+" ==> :help multiple-cursors
+Bundle 'terryma/vim-multiple-cursors'
 
 "}}}
 
 " ===== display settings ===== {{{
-colo railscasts           " color scheme
+colo railscasts       " color scheme
 hi NonText term=NONE gui=NONE guifg=#555555
 hi ColorColumn guibg=#333333
 hi! link LineNr NonText
@@ -226,14 +246,15 @@ set cmdheight=1       " command line is two lines tall
 set laststatus=2      " always show a status line
 set shortmess+=I      " disable the welcome screen
 set colorcolumn=110   " show a vertical line at the 110 character mark
+set listchars=tab:.\ ,trail:.,extends:>,precedes:<
 "}}}
 
 " ===== set default tab settings ===== {{{
-set tabstop=2			    " basic tab stop
-set shiftwidth=2		  " spaces per tab
-set smarttab			    " insert tabs as spaces
-set expandtab			    " replace tabs with spaces
-set smartindent			  " autoindent following lines
+set tabstop=2         " basic tab stop
+set shiftwidth=2      " spaces per tab
+set smarttab          " insert tabs as spaces
+set expandtab         " replace tabs with spaces
+set smartindent       " autoindent following lines
 "}}}
 
 " ===== autocommand setup ===== {{{
@@ -247,6 +268,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 autocmd FileType markdown set makeprg=pandoc\ %\ -o\ %:r.html\ -s
+autocmd FileType markdown call EnableTextWrapMode()
 
 autocmd FileType coldfusion,cfscript set nosmarttab
 autocmd FileType coldfusion,cfscript set noexpandtab
@@ -270,9 +292,9 @@ endif
 
 " Mac only
 if has("gui_macvim")
-  set gfn=M+\ 1m\ Light\ 12 
-  set lines=34          " gui window height
-  set co=199            " gui window width
+  set gfn=M+\ 1m\ light:h13
+  set lines=92          " gui window height
+  set co=178            " gui window width
   set fuoptions=maxvert " configure fullscreen handling
   nmap <silent> <F11> :FullScreenToggle<CR>
 endif
@@ -294,14 +316,17 @@ endif
 
 " ===== set up custom keyboard mappings ===== {{{
 
-MapToggle <F2> number
-MapToggle <F4> wrap
-MapToggle <F3> hlsearch
+"nunmap <leader>fef
+"unmap <leader>fc
+"unmap <leader>hs
+
+s:MapToggle <F2> number
+s:MapToggle <F4> wrap
+s:MapToggle <F3> hlsearch
 nmap <silent> <F5> :ShowMarksToggle<CR>
 
-nmap <silent> <F10> <Plug>ToggleProject
-nmap <silent> <F12> :NERDTreeToggle<CR>
-nmap <leader>y :YRShow<CR>
+nmap <silent> <leader>f :BuffergatorClose<CR>:NERDTreeToggle<CR>
+nmap <silent> <leader>b :NERDTreeClose<CR>:BuffergatorToggle<CR>
 
 " my alternates to CTRL-W (which is too hard to type) :-)
 map <leader>j :winc j<CR>
