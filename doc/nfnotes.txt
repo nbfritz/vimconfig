@@ -21,6 +21,7 @@ CTRL-w =                resize two panes to equal sizes
 Side Pane~
 ,b                      open buffer list
 ,f                      open file list
+,e                      open (exuberant) tags list
 
 Folding~
 zc                      close folds

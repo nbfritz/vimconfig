@@ -20,6 +20,7 @@ command! SettingsEdit :vi $MYVIMRC
 command! SettingsReload :source $MYVIMRC
 command! NotesEdit :vi +set\ modifiable ~/.vim/doc/nfnotes.txt
 command! NotesReload :helptags ~/.vim/doc
+command! Notes :help nfnotes
 
 command! StripCarriageReturns :%s/\r//g
 command! StripTrailingSpaces :%s/\s\+$//g
@@ -205,12 +206,16 @@ Bundle 'Syntastic'
 Bundle 'terryma/vim-multiple-cursors'
 
 " rake support
-" ==> 
+" ==> :help rake
 Bundle 'tpope/vim-rake'
 
 " bundler support
-" ==>
+" ==> :help bundler
 Bundle 'tpope/vim-bundler'
+
+" ack support
+" ==> :help ack
+Bundle 'mileszs/ack.vim'
 
 "}}}
 
