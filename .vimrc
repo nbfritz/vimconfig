@@ -232,6 +232,7 @@ set cmdheight=1       " command line is two lines tall
 set laststatus=2      " always show a status line
 set shortmess+=I      " disable the welcome screen
 set colorcolumn=110   " show a vertical line at the 110 character mark
+set list              " show hidden characters
 set listchars=tab:.\ ,trail:.,extends:>,precedes:<
 "}}}
 
