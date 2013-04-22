@@ -6,6 +6,7 @@ function! s:MapToggle(key, opt)
  exec 'nnoremap '.a:key.' '.cmd
  exec 'inoremap '.a:key." \<C-O>".cmd
 endfunction
+command! -nargs=+ MapToggle call s:MapToggle(<f-args>)
 
 function! s:ToggleFullScreenMode()
  if &fullscreen
@@ -320,9 +321,9 @@ endif
 "unmap <leader>fc
 "unmap <leader>hs
 
-s:MapToggle <F2> number
-s:MapToggle <F4> wrap
-s:MapToggle <F3> hlsearch
+MapToggle <F2> number
+MapToggle <F4> wrap
+MapToggle <F3> hlsearch
 nmap <silent> <F5> :ShowMarksToggle<CR>
 
 nmap <silent> <leader>f :BuffergatorClose<CR>:NERDTreeToggle<CR>
