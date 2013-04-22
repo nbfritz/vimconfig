@@ -8,37 +8,6 @@ function! s:MapToggle(key, opt)
 endfunction
 command! -nargs=+ MapToggle call s:MapToggle(<f-args>)
 
-function! s:ToggleFullScreenMode()
- if &fullscreen
-  let &gfn=g:old_font
-  let &columns=g:old_columns
-  let &lines=g:old_lines
-  let &colorcolumn=g:old_colorcolumn
-  let &linebreak=g:old_linebreak
-  let &number=g:old_number
-  set nofullscreen
- else
-  let g:old_font=&gfn
-  let g:old_columns=&columns
-  let g:old_lines=&lines
-  let g:old_colorcolumn=&colorcolumn
-  let g:old_linebreak=&linebreak
-  let g:old_number=&number
-  if has("gui_macvim")
-    set gfn=M+\ 1m\ light:h18
-  endif
-  if has("gui_win32")
-    set gfn=Envy_Code_R:h14
-  endif
-  set co=110
-  set colorcolumn=
-  set linebreak
-  set fullscreen
-  set nonumber
- endif
-endfunction
-command! FullScreenToggle call s:ToggleFullScreenMode()
-
 function! s:EnableTextWrapMode()
   set wrap
   set linebreak
@@ -269,7 +238,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 autocmd FileType markdown set makeprg=pandoc\ %\ -o\ %:r.html\ -s
-autocmd FileType markdown call EnableTextWrapMode()
+autocmd FileType markdown call s:EnableTextWrapMode()
 
 autocmd FileType coldfusion,cfscript set nosmarttab
 autocmd FileType coldfusion,cfscript set noexpandtab
@@ -297,6 +266,37 @@ if has("gui_macvim")
   set lines=92          " gui window height
   set co=178            " gui window width
   set fuoptions=maxvert " configure fullscreen handling
+  
+  function! s:ToggleFullScreenMode()
+   if &fullscreen
+    let &gfn=g:old_font
+    let &columns=g:old_columns
+    let &lines=g:old_lines
+    let &colorcolumn=g:old_colorcolumn
+    let &linebreak=g:old_linebreak
+    let &number=g:old_number
+    set nofullscreen
+   else
+    let g:old_font=&gfn
+    let g:old_columns=&columns
+    let g:old_lines=&lines
+    let g:old_colorcolumn=&colorcolumn
+    let g:old_linebreak=&linebreak
+    let g:old_number=&number
+    if has("gui_macvim")
+      set gfn=M+\ 1m\ light:h18
+    endif
+    if has("gui_win32")
+      set gfn=Envy_Code_R:h14
+    endif
+    set co=110
+    set colorcolumn=
+    set linebreak
+    set fullscreen
+    set nonumber
+   endif
+  endfunction
+  command! FullScreenToggle call s:ToggleFullScreenMode()
   nmap <silent> <F11> :FullScreenToggle<CR>
 endif
 
