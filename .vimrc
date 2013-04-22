@@ -162,10 +162,13 @@ Bundle 'neocomplcache'
 
 " use tab for completion in visual mode
 " ==> :help supertab 
-Bundle 'SuperTab-continued.'
+let g:tagbar_left = 1
+let g:tagbar_width = 40
+Bundle 'ervandew/supertab'
 
-" railscasts color scheme
+" color schemes
 Bundle 'railscasts'
+Bundle 'tpope/vim-vividchalk'
 
 " markdown support
 Bundle 'Markdown'
@@ -200,6 +203,14 @@ Bundle 'Syntastic'
 " multiple cursors
 " ==> :help multiple-cursors
 Bundle 'terryma/vim-multiple-cursors'
+
+" rake support
+" ==> 
+Bundle 'tpope/vim-rake'
+
+" bundler support
+" ==>
+Bundle 'tpope/vim-bundler'
 
 "}}}
 
@@ -326,8 +337,9 @@ MapToggle <F4> wrap
 MapToggle <F3> hlsearch
 nmap <silent> <F5> :ShowMarksToggle<CR>
 
-nmap <silent> <leader>f :BuffergatorClose<CR>:NERDTreeToggle<CR>
-nmap <silent> <leader>b :NERDTreeClose<CR>:BuffergatorToggle<CR>
+nmap <silent> <leader>f :BuffergatorClose<CR>:TagbarClose<CR>:NERDTreeToggle<CR>
+nmap <silent> <leader>b :NERDTreeClose<CR>:TagbarClose<CR>:BuffergatorToggle<CR>
+nmap <silent> <leader>e :NERDTreeClose<CR>:BuffergatorClose<CR>:TagbarToggle<CR>
 
 " my alternates to CTRL-W (which is too hard to type) :-)
 map <leader>j :winc j<CR>
