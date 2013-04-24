@@ -217,6 +217,10 @@ Bundle 'tpope/vim-bundler'
 " ==> :help ack
 Bundle 'mileszs/ack.vim'
 
+" dispatch to terminal
+" ==> :help dispatch
+Bundle 'tpope/vim-dispatch'
+
 "}}}
 
 " ===== display settings ===== {{{
