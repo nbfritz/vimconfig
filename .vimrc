@@ -271,19 +271,21 @@ autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~
 
 " ===== OS-dependent setup ===== {{{
 
-if has("macvim")
-  let g:this_os = "mac"
+let g:this_os = ""
+
+if has("gui_macvim")
+  let g:this_os .= "mac "
 elseif has("win32")
-  let g:this_os = "windows"
+  let g:this_os .= "windows "
 elseif has("X11")
-  let g:this_os = "linux"
+  let g:this_os .= "linux "
 end
 
 if has("gui_running")
-  let g:this_os .= ' gui'
+  let g:this_os .= "gui"
   set guioptions=egm
 else
-  let g:this_os .= ' term'
+  let g:this_os .= "term"
 endif
 
 " Mac only
