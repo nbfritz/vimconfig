@@ -270,69 +270,41 @@ autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~
 "}}}
 
 " ===== OS-dependent setup ===== {{{
-" GUI only
+
+if has("macvim")
+  let g:this_os = "mac"
+elseif has("win32")
+  let g:this_os = "windows"
+elseif has("X11")
+  let g:this_os = "linux"
+end
+
 if has("gui_running")
-" To autodisplay NERDTree, enable the following two lines
-  "autocmd VimEnter * NERDTree default
-  "autocmd VimEnter * wincmd p
-" To autodisplay Project, enable the following two lines
-  "autocmd VimEnter * Project
-  "autocmd VimEnter * wincmd p
-  set guioptions=egm                " configure gui
+  let g:this_os .= ' gui'
+  set guioptions=egm
+else
+  let g:this_os .= ' term'
 endif
 
 " Mac only
-if has("gui_macvim")
+if g:this_os == "mac gui"
   set gfn=M+\ 1m\ light:h13
-  set lines=92          " gui window height
-  set co=178            " gui window width
-  set fuoptions=maxvert " configure fullscreen handling
-  
-  function! s:ToggleFullScreenMode()
-   if &fullscreen
-    let &gfn=g:old_font
-    let &columns=g:old_columns
-    let &lines=g:old_lines
-    let &colorcolumn=g:old_colorcolumn
-    let &linebreak=g:old_linebreak
-    let &number=g:old_number
-    set nofullscreen
-   else
-    let g:old_font=&gfn
-    let g:old_columns=&columns
-    let g:old_lines=&lines
-    let g:old_colorcolumn=&colorcolumn
-    let g:old_linebreak=&linebreak
-    let g:old_number=&number
-    if has("gui_macvim")
-      set gfn=M+\ 1m\ light:h18
-    endif
-    if has("gui_win32")
-      set gfn=Envy_Code_R:h14
-    endif
-    set co=110
-    set colorcolumn=
-    set linebreak
-    set fullscreen
-    set nonumber
-   endif
-  endfunction
-  command! FullScreenToggle call s:ToggleFullScreenMode()
-  nmap <silent> <F11> :FullScreenToggle<CR>
+  set lines=92
+  set co=178
 endif
 
 " Windows only
-if has("gui_win32")
+if g:this_os == "windows gui"
   set gfn=Envy_Code_R:h10
-  set lines=36          " gui window height
-  set co=140            " gui window width
+  set lines=30
+  set co=120
 endif
 
 " Linux only
-if has("X11")
+if g:this_os == "linux gui"
   set gfn=M+\ 1m\ Medium\ 12
-  set lines=92          " gui window height
-  set co=178            " gui window width
+  set lines=30
+  set co=120
 endif
 "}}}
 
