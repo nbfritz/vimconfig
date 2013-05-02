@@ -215,6 +215,7 @@ Bundle 'tpope/vim-bundler'
 
 " ack support
 " ==> :help ack
+let g:ackprg = 'ag --nogroup --nocolor --column --follow'
 Bundle 'mileszs/ack.vim'
 
 " dispatch to terminal
