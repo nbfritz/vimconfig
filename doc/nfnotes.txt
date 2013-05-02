@@ -9,7 +9,6 @@ Function Keys~
 <F2>                    toggle line numbers
 <F3>                    toggle highlighted search
 <F4>                    toggle line wrap
-<F11>                   toggle distraction-free fullscreen mode (os x only)
 
 Window Navigation~
 CTRL-w h (or ,h)        move to leftward pane
@@ -28,6 +27,12 @@ zc                      close folds
 zm                      close all folds
 zo                      open folds
 zn                      open all folds
+
+Searching~
+/                       search for a string or regex
+?                       like / but backwards
+*                       search for the word under the cursor
+#                       like * but backwards
 
 ==============================================================================
 Custom Commands                                        *nfcommands* 
