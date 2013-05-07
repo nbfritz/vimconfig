@@ -62,9 +62,9 @@ Bundle 'gmarik/vundle'
 
 " project management for vim
 " ==> :help project
-let g:proj_flags="imst"
-let g:proj_window_width=36
-Bundle 'project.tar.gz'
+"let g:proj_flags="imst"
+"let g:proj_window_width=36
+"Bundle 'project.tar.gz'
 
 " functions used by other plugins
 Bundle "L9"
@@ -168,7 +168,8 @@ let g:tagbar_width = 40
 Bundle 'ervandew/supertab'
 
 " color schemes
-Bundle 'railscasts'
+"Bundle 'railscasts'
+Bundle 'jgdavey/vim-railscasts'
 Bundle 'tpope/vim-vividchalk'
 
 " markdown support
