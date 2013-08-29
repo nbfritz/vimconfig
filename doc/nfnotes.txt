@@ -44,5 +44,36 @@ Custom Commands                                        *nfcommands*
 *:StripCarriageReturns*    Strip all carriage returns from the file
 *:StripTrailingSpaces*     Strip any trailing spaces from the file                             
 
+==============================================================================
+VIM Plugins                                            *nfplugins* 
+
+|vundle|                   bundle management
+|align|                    align on separator characters
+|surround|                 mass changing of wrapping tags and characters
+|unimpaired|               a set of very handy pairs of actions like encodings, line shifts, etc.
+|nerdtree|                 filesystem browser
+|textobj|                  support for user-defined text objects (required by vim-textobj-rubyblock)
+|yankring|                 more sophisticated copy and paste system with numbered registers
+|matchit|                  extension to the % matcher to work with more than single characters
+|ctrlp|                    awesome search tool mapped to C-p
+|nerdcommenter|            nifty commenting commands
+|buffergator|              buffer switching
+|vim-ruby|                 ruby extensions
+|rails|                    ruby on rails extensions
+|rubyblock|                text matcher for selecting ruby blocks with ar and ir
+|rubyrefactoring|          easy refactoring in ruby
+|tagbar|                   tag browser for navigating through functions/variables/etc. in a script
+|fugitive|                 git integration for vim
+|vcscommand|               svn (and others) integration for vim
+|neocomplcache|            autocompletion
+|supertab|                 use tab for completion in visual mode
+|indent-object|            plugin to interpret and reference indentation levels (with ai, ii, aI, and iI)
+|powerline|                beautiful status lines
+|syntastic|                syntax checking
+|multiple-cursors|         multiple cursors
+|rake|                     rake support
+|bundler|                  bundler support
+|ack|                      ack support
+|dispatch|                 dispatch to terminal
 
  vim:tw=78:ts=8:ft=help:norl:

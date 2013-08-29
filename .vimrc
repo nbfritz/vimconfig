@@ -25,6 +25,8 @@ command! Notes :help nfnotes
 command! StripCarriageReturns :%s/\r//g
 command! StripTrailingSpaces :%s/\s\+$//g
 
+command! -nargs=* Ag :Ack <args>
+
 "}}}
 
 " ===== general settings ===== {{{
@@ -50,6 +52,10 @@ set ignorecase                    " searches are case insensitive...
 set smartcase                     " unless an upper case character is sought
 
 let mapleader = ','               " a bunch of keyboard commands use the leader character...
+
+if has('cryptv') 
+  set cryptmethod=blowfish
+endif
 "}}}
 
 " ===== bundle configuration ===== {{{
@@ -127,6 +133,7 @@ Bundle 'scrooloose/nerdcommenter'
 " ==> :help buffergator
 let g:buffergator_autoexpand_on_split=0
 let g:buffergator_suppress_keymaps=1
+let g:buffergator_sort_regime="mru"
 Bundle 'Buffergator'
 
 " ruby extensions
@@ -223,6 +230,9 @@ Bundle 'mileszs/ack.vim'
 " ==> :help dispatch
 Bundle 'tpope/vim-dispatch'
 
+" open files as sudo
+Bundle 'sudo.vim'
+
 "}}}
 
 " ===== display settings ===== {{{
@@ -237,7 +247,7 @@ set history=50        " 50 lines of command line history
 set cmdheight=1       " command line is two lines tall
 set laststatus=2      " always show a status line
 set shortmess+=I      " disable the welcome screen
-set colorcolumn=110   " show a vertical line at the 110 character mark
+set colorcolumn=120   " show a vertical line at the 120 character mark
 set list              " show hidden characters
 set listchars=tab:.\ ,trail:.,extends:>,precedes:<
 "}}}
@@ -332,6 +342,9 @@ map <leader>j :winc j<CR>
 map <leader>k :winc k<CR>
 map <leader>h :winc h<CR>
 map <leader>l :winc l<CR>
+
+" map jk as an alternative to <ESC> for leaving typing mode
+imap jk <ESC>
 
 "}}}
 
