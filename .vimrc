@@ -24,6 +24,8 @@ command! Notes :help nfnotes
 
 command! StripCarriageReturns :%s/\r//g
 command! StripTrailingSpaces :%s/\s\+$//g
+command! StripTabTo2Spaces :%s/\t/  /g
+command! StripTabTo4Spaces :%s/\t/    /g
 
 command! -nargs=* Ag :Ack <args>
 
@@ -46,6 +48,10 @@ set directory=~/.vim/tmp/swap//   " locate swap files
 set noswapfile                    " no swap files 
 set backup                        " enable backup versions
 set mouse=a                       " enable mouse
+
+set splitbelow                    " open new splits below
+set splitright                    " open new vsplits to the right
+
 syntax on                         " enable syntax highlighting
 set hlsearch                      " enable highlighted searching
 set ignorecase                    " searches are case insensitive...
@@ -105,10 +111,6 @@ Bundle 'scrooloose/nerdtree'
 " support for user-defined text objects (required by vim-textobj-rubyblock)
 " ==> :help textobj
 Bundle 'kana/vim-textobj-user'
-
-" more sophisticated copy and paste system with numbered registers
-" ==> :help yankring
-"Bundle 'vim-scripts/YankRing.vim'
 
 " extension to the % matcher to work with more than single characters
 " ==> :help matchit
@@ -199,14 +201,18 @@ Bundle 'https://github.com/davejlong/cf-utils.vim'
 let g:showmarks_enable=0
 Bundle 'ShowMarks'
 
-" addons required by snippets'
+" snippets
+" ==> :help snipMate
 Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
 
 " css coloring
 Bundle 'ap/vim-css-color'
 
 " syntax checking
 " ==> :help syntastic
+let g:syntastic_javascript_checkers=['jshint']
 Bundle 'Syntastic'
 
 " multiple cursors
@@ -273,8 +279,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType markdown set makeprg=pandoc\ %\ -o\ %:r.html\ -s
 autocmd FileType markdown call s:EnableTextWrapMode()
 
-autocmd FileType coldfusion,cfscript,cfml set nosmarttab
-autocmd FileType coldfusion,cfscript,cfml set noexpandtab
+autocmd FileType coldfusion,cfscript,cfml set nosmarttab | set expandtab 
 
 " automatically fold comments in ruby
 autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~'^\\s*#' | exe "normal zM``"
