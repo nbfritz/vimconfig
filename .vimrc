@@ -16,16 +16,17 @@ function! s:EnableTextWrapMode()
 endfunction
 command! WrapText call s:EnableTextWrapMode()
 
-command! SettingsEdit :vi $MYVIMRC
-command! SettingsReload :source $MYVIMRC
-command! NotesEdit :vi +set\ modifiable ~/.vim/doc/nfnotes.txt
-command! NotesReload :helptags ~/.vim/doc
-command! Notes :help nfnotes
+command! -bar SettingsEdit :split|vi $MYVIMRC
+command! -bar SettingsReload :source $MYVIMRC
+command! -bar NotesEdit :vi +set\ modifiable ~/.vim/doc/nfnotes.txt
+command! -bar NotesReload :helptags ~/.vim/doc
+command! -bar Notes :help nfnotes
 
-command! StripCarriageReturns :%s/\r//g
-command! StripTrailingSpaces :%s/\s\+$//g
-command! StripTabTo2Spaces :%s/\t/  /g
-command! StripTabTo4Spaces :%s/\t/    /g
+command! -bar StripCarriageReturns :%s/\r//ge
+command! -bar StripTrailingSpaces :%s/\s\+$//ge
+command! -bar StripTabTo2Spaces :%s/\t/  /ge
+command! -bar StripTabTo4Spaces :%s/\t/    /ge
+command! -bar StripAll :StripCarriageReturns|StripTrailingSpaces|StripTabTo2Spaces
 
 command! -nargs=* Ag :Ack <args>
 
@@ -201,12 +202,6 @@ Bundle 'https://github.com/davejlong/cf-utils.vim'
 let g:showmarks_enable=0
 Bundle 'ShowMarks'
 
-" snippets
-" ==> :help snipMate
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
-
 " css coloring
 Bundle 'ap/vim-css-color'
 
@@ -214,10 +209,6 @@ Bundle 'ap/vim-css-color'
 " ==> :help syntastic
 let g:syntastic_javascript_checkers=['jshint']
 Bundle 'Syntastic'
-
-" multiple cursors
-" ==> :help multiple-cursors
-Bundle 'terryma/vim-multiple-cursors'
 
 " rake support
 " ==> :help rake
@@ -240,10 +231,12 @@ Bundle 'tpope/vim-dispatch'
 Bundle 'sudo.vim'
 
 " unite for file/buffer/kitchen-sink search
+"let g:unite_enable_start_insert = 1
 if executable('ag')
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
+  let g:unite_source_file_rec_max_cache_files = 20000
 endif
 Bundle 'Shougo/vimproc.vim'
 Bundle 'Shougo/unite.vim'
@@ -317,8 +310,8 @@ endif
 " Mac only
 if g:this_os == "mac gui"
   set gfn=M+\ 1m\ light:h13
-  set lines=92
-  set co=178
+  set lines=73
+  set co=222
 endif
 
 " Windows only
@@ -359,6 +352,16 @@ map <leader>l :winc l<CR>
 
 " map jk as an alternative to <ESC> for leaving typing mode
 imap jk <ESC>
+
+" mappings for unite
+map <leader><leader>u :Unite source<CR>
+map <leader><leader>f :Unite file_rec/async<CR>
+map <leader><leader>r :Unite file_mru<CR>
+map <leader><leader>g :Unite grep:.<CR>
+map <leader><leader>b :Unite buffer<CR>
+map <leader><leader>r :Unite file_mru<CR>
+map <leader><leader>m :Unite bookmark<CR>
+map <leader><leader>a :UniteBookmarkAdd<CR>
 
 "}}}
 
