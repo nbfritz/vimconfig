@@ -71,35 +71,29 @@ endif
 " ==> :help Vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
-
-" project management for vim
-" ==> :help project
-"let g:proj_flags="imst"
-"let g:proj_window_width=36
-"Bundle 'project.tar.gz'
+Plugin 'gmarik/vundle'
 
 " functions used by other plugins
-Bundle "L9"
+Plugin 'L9'
 
 " align on separator characters
 " ==> :help align
 let g:DrChipTopLvlMenu="Plugin."
-Bundle 'tsaleh/vim-align'
+Plugin 'tsaleh/vim-align'
 
 " automatic insertion of end statements
-Bundle 'tpope/vim-endwise'
+Plugin 'tpope/vim-endwise'
 
 " extended . repeat command (now works with more plugins)
-Bundle 'tpope/vim-repeat'
+Plugin 'tpope/vim-repeat'
 
 " mass changing of wrapping tags and characters
 " ==> :help surround
-Bundle 'tpope/vim-surround'
+Plugin 'tpope/vim-surround'
 
 " a set of very handy pairs of actions like encodings, line shifts, etc.
 " ==> :help unimpaired
-Bundle 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-unimpaired'
 
 " filesystem browser
 " ==> :help nerdtree
@@ -107,15 +101,11 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2
 let g:NERDTreeWinSize=40
 let g:NERDTreeQuitOnOpen=1
-Bundle 'scrooloose/nerdtree' 
-
-" support for user-defined text objects (required by vim-textobj-rubyblock)
-" ==> :help textobj
-Bundle 'kana/vim-textobj-user'
+Plugin 'scrooloose/nerdtree' 
 
 " extension to the % matcher to work with more than single characters
 " ==> :help matchit
-Bundle 'edsono/vim-matchit'
+Plugin 'edsono/vim-matchit'
 
 " awesome search tool mapped to C-p
 " ==> :help ctrlp
@@ -123,123 +113,97 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = '\.class$'
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_cmd = 'CtrlP getcwd()'
-Bundle 'kien/ctrlp.vim'
-
-" scratch buffers with :Scratch
-Bundle 'vim-scripts/scratch.vim'
+Plugin 'kien/ctrlp.vim'
 
 " nifty commenting commands
 " ==> :help nerdcommenter
-Bundle 'scrooloose/nerdcommenter' 
+Plugin 'scrooloose/nerdcommenter' 
 
 " buffer switching
 " ==> :help buffergator
 let g:buffergator_autoexpand_on_split=0
 let g:buffergator_suppress_keymaps=1
 let g:buffergator_sort_regime="mru"
-Bundle 'Buffergator'
+Plugin 'Buffergator'
 
 " ruby extensions
 " ==> :help vim-ruby
-Bundle 'vim-ruby/vim-ruby'
+Plugin 'vim-ruby/vim-ruby'
+
+" rake support
+" ==> :help rake
+Plugin 'tpope/vim-rake'
 
 " ruby on rails extensions
 " ==> :help rails
-Bundle 'tpope/vim-rails'
-
-" text matcher for selecting ruby blocks with ar and ir
-" ==> :help rubyblock
-Bundle 'nelstrom/vim-textobj-rubyblock'
-
-" easy refactoring in ruby
-" ==> :help rubyrefactoring
-Bundle 'ecomba/vim-ruby-refactoring'
+Plugin 'tpope/vim-rails'
 
 " tag browser for navigating through functions/variables/etc. in a script
 " ==> :help tagbar
-Bundle 'majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 
 " git integration for vim
 " ==> :help fugitive
-Bundle 'tpope/vim-fugitive' 
+Plugin 'tpope/vim-fugitive' 
 
 " svn (and others) integration for vim
 " ==> :help vcscommand
-Bundle 'vcscommand.vim'
+Plugin 'vcscommand.vim'
 
 " autocompletion
 " ==> :help neocomplcache
-Bundle 'neocomplcache'
+Plugin 'neocomplcache'
 
 " use tab for completion in visual mode
 " ==> :help supertab 
 let g:tagbar_left = 1
 let g:tagbar_width = 40
-Bundle 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 
 " color schemes
-"Bundle 'railscasts'
-Bundle 'jgdavey/vim-railscasts'
-Bundle 'tpope/vim-vividchalk'
+"Plugin 'railscasts'
+Plugin 'jgdavey/vim-railscasts'
+Plugin 'tpope/vim-vividchalk'
 
 " markdown support
-Bundle 'Markdown'
+Plugin 'Markdown'
 
 " plugin to interpret and reference indentation levels (with ai, ii, aI, and iI)
 " ==> :help indent-object
-Bundle 'michaeljsmith/vim-indent-object'
 let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "markdown"]
+Plugin 'michaeljsmith/vim-indent-object'
 
 " beautiful status lines
 " ==> :help powerline
-Bundle 'Lokaltog/vim-powerline'
 let g:Powerline_symbols = 'compatible'
+Plugin 'Lokaltog/vim-powerline'
 
 " coldfusion support
-Bundle 'https://github.com/davejlong/cf-utils.vim'
-
-" mark indicators
-let g:showmarks_enable=0
-Bundle 'ShowMarks'
+Plugin 'https://github.com/davejlong/cf-utils.vim'
 
 " css coloring
-Bundle 'ap/vim-css-color'
+Plugin 'ap/vim-css-color'
 
 " syntax checking
 " ==> :help syntastic
 let g:syntastic_javascript_checkers=['jshint']
-Bundle 'Syntastic'
-
-" rake support
-" ==> :help rake
-Bundle 'tpope/vim-rake'
+Plugin 'Syntastic'
 
 " bundler support
 " ==> :help bundler
-Bundle 'tpope/vim-bundler'
+Plugin 'tpope/vim-bundler'
 
 " ack support
 " ==> :help ack
 let g:ackprg = 'ag --nogroup --nocolor --column --follow'
-Bundle 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim'
 
 " dispatch to terminal
 " ==> :help dispatch
-Bundle 'tpope/vim-dispatch'
+Plugin 'tpope/vim-dispatch'
 
 " open files as sudo
-Bundle 'sudo.vim'
-
-" unite for file/buffer/kitchen-sink search
-"let g:unite_enable_start_insert = 1
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-  let g:unite_source_grep_recursive_opt = ''
-  let g:unite_source_file_rec_max_cache_files = 20000
-endif
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Shougo/unite.vim'
+Plugin 'sudo.vim'
 
 "}}}
 
