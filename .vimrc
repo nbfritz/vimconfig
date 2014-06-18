@@ -219,9 +219,9 @@ Plugin 'mattn/emmet-vim'
 Plugin 'kchmck/vim-coffee-script'
 
 " marks management
-let l:gmarks_names = 'abcdefghijklmnopqrstuvwxyz'
 let g:gmarks_names = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-Plugin 'khorser/vim-mark-tools'
+let g:markology_enable = 0
+Plugin 'jeetsukumaran/vim-markology'
 
 "}}}
 
@@ -319,15 +319,14 @@ endif
 MapToggle <F2> number
 MapToggle <F4> wrap
 MapToggle <F3> hlsearch
+nmap <F9> <Plug>MarkologyToggle
 
 nmap <silent> <leader>f :BuffergatorClose<CR>:TagbarClose<CR>:NERDTreeToggle<CR>
 nmap <silent> <leader>b :NERDTreeClose<CR>:TagbarClose<CR>:BuffergatorToggle<CR>
 nmap <silent> <leader>e :NERDTreeClose<CR>:BuffergatorClose<CR>:TagbarToggle<CR>
 nmap <leader>r :MRU<CR>
-nmap <leader>M <Plug>MarksLoc
-nmap <leader>m <Plug>MarksQF
-nmap <leader>x <Plug>NextMarkPos
-nmap <leader>z <Plug>PrevMarkPos
+nmap <leader>M <Plug>MarkologyLocationList
+nmap <leader>m <Plug>MarkologyQuickFix
 
 " my alternates to CTRL-W (which is too hard to type) :-)
 map <leader>j :winc j<CR>
