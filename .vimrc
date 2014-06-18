@@ -166,7 +166,8 @@ Plugin 'jgdavey/vim-railscasts'
 Plugin 'tpope/vim-vividchalk'
 
 " markdown support
-Plugin 'Markdown'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'mkitt/markdown-preview.vim'
 
 " plugin to interpret and reference indentation levels (with ai, ii, aI, and iI)
 " ==> :help indent-object
@@ -195,7 +196,7 @@ Plugin 'tpope/vim-bundler'
 
 " ack support
 " ==> :help ack
-let g:ackprg = 'ag --nogroup --nocolor --column --follow'
+let g:ackprg = 'ag --nogroup --nocolor --column --follow --smart-case'
 Plugin 'mileszs/ack.vim'
 
 " dispatch to terminal
@@ -204,6 +205,19 @@ Plugin 'tpope/vim-dispatch'
 
 " open files as sudo
 Plugin 'sudo.vim'
+
+" most recently used (MRU) file list
+let MRU_Max_Entries = 30
+Plugin 'yegappan/mru'
+
+" emmet html/css accellerators
+" ==> :help emmet
+let g:user_emmet_leader_key = '<c-e>'
+Plugin 'mattn/emmet-vim'
+
+" coffeescript support
+Plugin 'kchmck/vim-coffee-script'
+
 
 "}}}
 
@@ -219,7 +233,7 @@ set history=50        " 50 lines of command line history
 set cmdheight=1       " command line is two lines tall
 set laststatus=2      " always show a status line
 set shortmess+=I      " disable the welcome screen
-set colorcolumn=120   " show a vertical line at the 120 character mark
+set colorcolumn=100   " show a vertical line at the 120 character mark
 set list              " show hidden characters
 set listchars=tab:.\ ,trail:.,extends:>,precedes:<
 "}}}
@@ -242,8 +256,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-autocmd FileType markdown set makeprg=pandoc\ %\ -o\ %:r.html\ -s
-autocmd FileType markdown call s:EnableTextWrapMode()
+autocmd FileType markdown map <F5> :MDP<CR>
 
 autocmd FileType coldfusion,cfscript,cfml set nosmarttab | set expandtab 
 
@@ -302,11 +315,13 @@ endif
 MapToggle <F2> number
 MapToggle <F4> wrap
 MapToggle <F3> hlsearch
-nmap <silent> <F5> :ShowMarksToggle<CR>
+nmap <silent> <F9> :ShowMarksToggle<CR>
 
 nmap <silent> <leader>f :BuffergatorClose<CR>:TagbarClose<CR>:NERDTreeToggle<CR>
 nmap <silent> <leader>b :NERDTreeClose<CR>:TagbarClose<CR>:BuffergatorToggle<CR>
 nmap <silent> <leader>e :NERDTreeClose<CR>:BuffergatorClose<CR>:TagbarToggle<CR>
+nmap <silent> <leader>r :MRU<CR>
+nmap <silent> <leader>m :marks<CR>
 
 " my alternates to CTRL-W (which is too hard to type) :-)
 map <leader>j :winc j<CR>
@@ -316,17 +331,6 @@ map <leader>l :winc l<CR>
 
 " map jk as an alternative to <ESC> for leaving typing mode
 imap jk <ESC>
-
-" mappings for unite
-map <leader><leader>u :Unite source<CR>
-map <leader><leader>f :Unite file_rec/async<CR>
-map <leader><leader>r :Unite file_mru<CR>
-map <leader><leader>g :Unite grep:.<CR>
-map <leader><leader>b :Unite buffer<CR>
-map <leader><leader>r :Unite file_mru<CR>
-map <leader><leader>m :Unite bookmark<CR>
-map <leader><leader>a :UniteBookmarkAdd<CR>
-
 "}}}
 
 " vim:fdm=marker:ft=vim
