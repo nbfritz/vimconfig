@@ -218,6 +218,10 @@ Plugin 'mattn/emmet-vim'
 " coffeescript support
 Plugin 'kchmck/vim-coffee-script'
 
+" marks management
+let l:gmarks_names = 'abcdefghijklmnopqrstuvwxyz'
+let g:gmarks_names = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+Plugin 'khorser/vim-mark-tools'
 
 "}}}
 
@@ -315,13 +319,15 @@ endif
 MapToggle <F2> number
 MapToggle <F4> wrap
 MapToggle <F3> hlsearch
-nmap <silent> <F9> :ShowMarksToggle<CR>
 
 nmap <silent> <leader>f :BuffergatorClose<CR>:TagbarClose<CR>:NERDTreeToggle<CR>
 nmap <silent> <leader>b :NERDTreeClose<CR>:TagbarClose<CR>:BuffergatorToggle<CR>
 nmap <silent> <leader>e :NERDTreeClose<CR>:BuffergatorClose<CR>:TagbarToggle<CR>
-nmap <silent> <leader>r :MRU<CR>
-nmap <silent> <leader>m :marks<CR>
+nmap <leader>r :MRU<CR>
+nmap <leader>M <Plug>MarksLoc
+nmap <leader>m <Plug>MarksQF
+nmap <leader>x <Plug>NextMarkPos
+nmap <leader>z <Plug>PrevMarkPos
 
 " my alternates to CTRL-W (which is too hard to type) :-)
 map <leader>j :winc j<CR>
