@@ -175,9 +175,10 @@ let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "
 Plugin 'michaeljsmith/vim-indent-object'
 
 " beautiful status lines
-" ==> :help powerline
-let g:Powerline_symbols = 'compatible'
-Plugin 'Lokaltog/vim-powerline'
+" ==> :help airline
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+Plugin 'bling/vim-airline'
 
 " coldfusion support
 Plugin 'https://github.com/davejlong/cf-utils.vim'
