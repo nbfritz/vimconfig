@@ -297,7 +297,7 @@ endif
 
 " Windows only
 if g:this_os == "windows gui"
-  set gfn=Envy_Code_R:h10
+  set gfn=M+\ 1m\ medium:h10
   set lines=30
   set co=120
 endif
