@@ -300,6 +300,7 @@ if g:this_os == "windows gui"
   set gfn=Envy_Code_R:h10
   set lines=30
   set co=120
+  let g:ruby_path = ":C:\dev\ruby200\bin"
 endif
 
 " Linux only
