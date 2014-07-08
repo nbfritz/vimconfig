@@ -16,6 +16,13 @@ function! s:EnableTextWrapMode()
 endfunction
 command! WrapText call s:EnableTextWrapMode()
 
+function! s:WritingMode()
+  Goyo
+  SoftPencil
+  Limelight0.6
+endfunction
+command! Write call s:WritingMode()
+
 command! -bar SettingsEdit :split|vi $MYVIMRC
 command! -bar SettingsReload :source $MYVIMRC
 command! -bar NotesEdit :vi +set\ modifiable ~/.vim/doc/nfnotes.txt
