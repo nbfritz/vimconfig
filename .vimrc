@@ -220,6 +220,11 @@ let g:gmarks_names = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let g:markology_enable = 0
 Plugin 'jeetsukumaran/vim-markology'
 
+" word processing support
+Plugin 'reedes/vim-pencil'
+Plugin 'junegunn/limelight.vim'
+Plugin 'junegunn/goyo.vim'
+
 "}}}
 
 " ===== display settings ===== {{{
@@ -297,6 +302,7 @@ if g:this_os == "windows gui"
   set gfn=Envy_Code_R:h10:cANSI
   set lines=30
   set co=120
+  let g:ruby_path = ":C:\dev\ruby200\bin"
 endif
 
 " Linux only
