@@ -46,7 +46,7 @@ set backspace=indent,eol,start
 
 set backupdir=~/.vim/tmp/backup// " locate backups
 set directory=~/.vim/tmp/swap//   " locate swap files
-set noswapfile                    " no swap files 
+set noswapfile                    " no swap files
 set backup                        " enable backup versions
 set mouse=a                       " enable mouse
 
@@ -60,7 +60,7 @@ set smartcase                     " unless an upper case character is sought
 
 let mapleader = ','               " a bunch of keyboard commands use the leader character...
 
-if has('cryptv') 
+if has('cryptv')
   set cryptmethod=blowfish
 endif
 "}}}
@@ -101,7 +101,7 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2
 let g:NERDTreeWinSize=40
 let g:NERDTreeQuitOnOpen=1
-Plugin 'scrooloose/nerdtree' 
+Plugin 'scrooloose/nerdtree'
 
 " extension to the % matcher to work with more than single characters
 " ==> :help matchit
@@ -117,7 +117,7 @@ Plugin 'kien/ctrlp.vim'
 
 " nifty commenting commands
 " ==> :help nerdcommenter
-Plugin 'scrooloose/nerdcommenter' 
+Plugin 'scrooloose/nerdcommenter'
 
 " buffer switching
 " ==> :help buffergator
@@ -144,7 +144,7 @@ Plugin 'majutsushi/tagbar'
 
 " git integration for vim
 " ==> :help fugitive
-Plugin 'tpope/vim-fugitive' 
+Plugin 'tpope/vim-fugitive'
 
 " svn (and others) integration for vim
 " ==> :help vcscommand
@@ -155,7 +155,7 @@ Plugin 'vcscommand.vim'
 Plugin 'neocomplcache'
 
 " use tab for completion in visual mode
-" ==> :help supertab 
+" ==> :help supertab
 let g:tagbar_left = 1
 let g:tagbar_width = 40
 Plugin 'ervandew/supertab'
@@ -164,10 +164,6 @@ Plugin 'ervandew/supertab'
 "Plugin 'railscasts'
 Plugin 'jgdavey/vim-railscasts'
 Plugin 'tpope/vim-vividchalk'
-
-" markdown support
-Plugin 'plasticboy/vim-markdown'
-Plugin 'mkitt/markdown-preview.vim'
 
 " plugin to interpret and reference indentation levels (with ai, ii, aI, and iI)
 " ==> :help indent-object
@@ -263,7 +259,7 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 autocmd FileType markdown map <F5> :MDP<CR>
 
-autocmd FileType coldfusion,cfscript,cfml set nosmarttab | set expandtab 
+autocmd FileType coldfusion,cfscript,cfml set nosmarttab | set expandtab
 
 " automatically fold comments in ruby
 autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~'^\\s*#' | exe "normal zM``"
@@ -298,7 +294,7 @@ endif
 
 " Windows only
 if g:this_os == "windows gui"
-  set gfn=M+\ 1m\ medium:h10
+  set gfn=Envy_Code_R:h10:cANSI
   set lines=30
   set co=120
 endif
