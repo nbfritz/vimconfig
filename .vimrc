@@ -224,6 +224,11 @@ let g:gmarks_names = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let g:markology_enable = 0
 Plugin 'jeetsukumaran/vim-markology'
 
+" word processing support
+Plugin 'reedes/vim-pencil'
+Plugin 'junegunn/limelight.vim'
+Plugin 'junegunn/goyo.vim'
+
 "}}}
 
 " ===== display settings ===== {{{
