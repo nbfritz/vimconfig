@@ -1,5 +1,25 @@
 " Remember, [zo] to open a fold. [zc] to close it. [zR] to open them all. [zM] to close them all.
 
+" ===== OS Detection Code ===== {{{
+let g:this_os = ""
+
+if has("gui_macvim")
+  let g:this_os .= "mac "
+elseif has("win32")
+  let g:this_os .= "windows "
+elseif has("X11")
+  let g:this_os .= "linux "
+end
+
+if has("gui_running")
+  let g:this_os .= "gui"
+  set guioptions=egm
+else
+  let g:this_os .= "term"
+endif
+
+" }}}
+
 " ===== Functions ===== {{{
 function! s:MapToggle(key, opt)
  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
@@ -22,6 +42,20 @@ function! s:WritingMode()
   Limelight0.6
 endfunction
 command! Write call s:WritingMode()
+
+function! s:PresentationMode()
+" Mac only
+if g:this_os == "mac gui"
+  set gfn=M+\ 1m\ light:h13
+elseif g:this_os == "windows gui"
+  set gfn=Envy_Code_R:h10:cANSI
+elseif g:this_os == "linux gui"
+  set gfn=M+\ 1m\ Medium\ 28
+endif
+set laststatus=0
+set guioptions=
+endfunction
+command! Present call s:PresentationMode()
 
 command! -bar SettingsEdit :split|vi $MYVIMRC
 command! -bar SettingsReload :source $MYVIMRC
@@ -279,23 +313,6 @@ autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~
 "}}}
 
 " ===== OS-dependent setup ===== {{{
-
-let g:this_os = ""
-
-if has("gui_macvim")
-  let g:this_os .= "mac "
-elseif has("win32")
-  let g:this_os .= "windows "
-elseif has("X11")
-  let g:this_os .= "linux "
-end
-
-if has("gui_running")
-  let g:this_os .= "gui"
-  set guioptions=egm
-else
-  let g:this_os .= "term"
-endif
 
 " Mac only
 if g:this_os == "mac gui"
