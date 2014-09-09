@@ -261,6 +261,9 @@ let g:gmarks_names = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let g:markology_enable = 0
 Plugin 'jeetsukumaran/vim-markology'
 
+" dynamic font zooming
+Plugin 'fontsize'
+
 " word processing support
 Plugin 'reedes/vim-pencil'
 Plugin 'junegunn/limelight.vim'
