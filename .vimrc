@@ -305,16 +305,16 @@ autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~
 
 " Mac only
 if g:this_os == "mac gui"
-  set gfn=Source\ Code\ Pro:h14
-  set lines=77
-  set co=194
+  set gfn=Source\ Code\ Pro:h12
+  set lines=92
+  set columns=222
 endif
 
 " Windows only
 if g:this_os == "windows gui"
   set gfn=Envy_Code_R:h10:cANSI
   set lines=30
-  set co=120
+  set columns=120
   let g:ruby_path = ":C:\dev\ruby200\bin"
 endif
 
@@ -322,7 +322,7 @@ endif
 if g:this_os == "linux gui"
   set gfn=Source\ Code\ Pro\ 13
   set lines=30
-  set co=120
+  set columns=120
 endif
 "}}}
 
