@@ -46,7 +46,7 @@ command! Write call s:WritingMode()
 function! s:PresentationMode()
 " Mac only
 if g:this_os == "mac gui"
-  set gfn=M+\ 1m\ light:h13
+  set gfn=M+\ 1m\ light:h44
 elseif g:this_os == "windows gui"
   set gfn=Envy_Code_R:h10:cANSI
 elseif g:this_os == "linux gui"
