@@ -305,7 +305,7 @@ autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~
 
 " Mac only
 if g:this_os == "mac gui"
-  set gfn=Envy\ Code\ R:h14
+  set gfn=Source\ Code\ Pro:h14
   set lines=73
   set co=222
 endif
