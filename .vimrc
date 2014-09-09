@@ -43,20 +43,6 @@ function! s:WritingMode()
 endfunction
 command! Write call s:WritingMode()
 
-function! s:PresentationMode()
-" Mac only
-if g:this_os == "mac gui"
-  set gfn=M+\ 1m\ light:h13
-elseif g:this_os == "windows gui"
-  set gfn=Envy_Code_R:h10:cANSI
-elseif g:this_os == "linux gui"
-  set gfn=M+\ 1m\ Medium\ 28
-endif
-set laststatus=0
-set guioptions=
-endfunction
-command! Present call s:PresentationMode()
-
 command! -bar SettingsEdit :split|vi $MYVIMRC
 command! -bar SettingsReload :source $MYVIMRC
 command! -bar NotesEdit :vi +set\ modifiable ~/.vim/doc/nfnotes.txt
@@ -334,7 +320,7 @@ endif
 
 " Linux only
 if g:this_os == "linux gui"
-  set gfn=M+\ 1m\ Medium\ 12
+  set gfn=Envy\ Code\ R\ 13
   set lines=30
   set co=120
 endif
