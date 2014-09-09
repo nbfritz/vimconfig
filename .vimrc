@@ -320,7 +320,7 @@ endif
 
 " Linux only
 if g:this_os == "linux gui"
-  set gfn=Envy\ Code\ R\ 13
+  set gfn=Source\ Code\ Pro\ 13
   set lines=30
   set co=120
 endif
