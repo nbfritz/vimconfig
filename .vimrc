@@ -103,10 +103,15 @@ Plugin 'gmarik/vundle'
 " functions used by other plugins
 Plugin 'L9'
 
-" align on separator characters
-" ==> :help align
-let g:DrChipTopLvlMenu="Plugin."
-Plugin 'tsaleh/vim-align'
+" indentation guides
+" ==> :help indent-guides
+let g:indent_guides_guide_size=1
+let g:indent_guides_default_mapping=0
+Plugin 'nathanaelkane/indent-guides'
+
+" tabularize for alignment
+" ==> :help tabulrize
+Plugin 'godlygeek/tabular.git'
 
 " automatic insertion of end statements
 Plugin 'tpope/vim-endwise'
@@ -122,11 +127,16 @@ Plugin 'tpope/vim-surround'
 " ==> :help unimpaired
 Plugin 'tpope/vim-unimpaired'
 
+" visual undo tree
+" ==> :help gundo
+let g:gundo_width=45
+Plugin 'sjl/gundo.vim'
+
 " filesystem browser
 " ==> :help nerdtree
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2
-let g:NERDTreeWinSize=40
+let g:NERDTreeWinSize=45
 let g:NERDTreeQuitOnOpen=1
 Plugin 'scrooloose/nerdtree'
 
@@ -151,6 +161,7 @@ Plugin 'scrooloose/nerdcommenter'
 let g:buffergator_autoexpand_on_split=0
 let g:buffergator_suppress_keymaps=1
 let g:buffergator_sort_regime="mru"
+let g:buffergator_split_size=45
 Plugin 'Buffergator'
 
 " ruby extensions
@@ -183,8 +194,8 @@ Plugin 'neocomplcache'
 
 " use tab for completion in visual mode
 " ==> :help supertab
-let g:tagbar_left = 1
-let g:tagbar_width = 40
+let g:tagbar_left=1
+let g:tagbar_width=45
 Plugin 'ervandew/supertab'
 
 " color schemes
@@ -220,7 +231,7 @@ Plugin 'tpope/vim-bundler'
 
 " ack support
 " ==> :help ack
-let g:ackprg = 'ag --nogroup --nocolor --column --follow --smart-case'
+let g:ackprg = 'ag --nogroup --nocolor --column --follow --smart-case --ignore coverage --ignore log --ignore vcr_cassettes'
 Plugin 'mileszs/ack.vim'
 
 " dispatch to terminal
@@ -294,10 +305,12 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 autocmd FileType markdown map <F5> :MDP<CR>
 
-autocmd FileType coldfusion,cfscript,cfml set nosmarttab | set expandtab
+autocmd FileType coldfusion,cfscript,cfml set nosmarttab | set expandtab | set indentexpr=
 
 " automatically fold comments in ruby
 autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~'^\\s*#' | exe "normal zM``"
+
+autocmd FileType crontab setlocal nobackup nowritebackup
 
 "}}}
 
@@ -333,13 +346,15 @@ endif
 "unmap <leader>hs
 
 MapToggle <F2> number
-MapToggle <F4> wrap
 MapToggle <F3> hlsearch
+MapToggle <F4> wrap
+nmap <F6> <Plug>IndentGuidesToggle
 nmap <F9> <Plug>MarkologyToggle
 
-nmap <silent> <leader>f :BuffergatorClose<CR>:TagbarClose<CR>:NERDTreeToggle<CR>
-nmap <silent> <leader>b :NERDTreeClose<CR>:TagbarClose<CR>:BuffergatorToggle<CR>
-nmap <silent> <leader>e :NERDTreeClose<CR>:BuffergatorClose<CR>:TagbarToggle<CR>
+nmap <silent> <leader>f :GundoHide<CR>:BuffergatorClose<CR>:TagbarClose<CR>:NERDTreeToggle<CR>
+nmap <silent> <leader>b :GundoHide<CR>:NERDTreeClose<CR>:TagbarClose<CR>:BuffergatorToggle<CR>
+nmap <silent> <leader>e :GundoHide<CR>:NERDTreeClose<CR>:BuffergatorClose<CR>:TagbarToggle<CR>
+nmap <silent> <leader>u :NERDTreeClose<CR>:BuffergatorClose<CR>:TagbarClose<CR>:GundoToggle<CR>
 nmap <leader>r :MRU<CR>
 nmap <leader>M <Plug>MarkologyLocationList
 nmap <leader>m <Plug>MarkologyQuickFix
