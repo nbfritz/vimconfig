@@ -222,7 +222,8 @@ Plugin 'ap/vim-css-color'
 
 " syntax checking
 " ==> :help syntastic
-let g:syntastic_javascript_checkers=['jshint']
+"let g:syntastic_javascript_checkers=['jshint']
+let g:syntastic_javascript_checkers=[]
 Plugin 'Syntastic'
 
 " bundler support
@@ -318,6 +319,8 @@ autocmd FileType crontab setlocal nobackup nowritebackup
 
 " Mac only
 if g:this_os == "mac gui"
+  set popt=left:2pc,right:5pc,top:5pc,bottom:5pc,number:y,portrait:y,paper:tabloid
+  set pfn=Source\ Code\ Pro:h7
   set gfn=Source\ Code\ Pro:h12
   set lines=92
   set columns=222
