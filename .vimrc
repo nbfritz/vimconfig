@@ -103,34 +103,11 @@ Plugin 'gmarik/vundle'
 " functions used by other plugins
 Plugin 'L9'
 
-" indentation guides
-" ==> :help indent-guides
-let g:indent_guides_guide_size=1
-let g:indent_guides_default_mapping=0
-Plugin 'nathanaelkane/indent-guides'
-
-" tabularize for alignment
-" ==> :help tabulrize
-Plugin 'godlygeek/tabular.git'
-
 " automatic insertion of end statements
 Plugin 'tpope/vim-endwise'
 
 " extended . repeat command (now works with more plugins)
 Plugin 'tpope/vim-repeat'
-
-" mass changing of wrapping tags and characters
-" ==> :help surround
-Plugin 'tpope/vim-surround'
-
-" a set of very handy pairs of actions like encodings, line shifts, etc.
-" ==> :help unimpaired
-Plugin 'tpope/vim-unimpaired'
-
-" visual undo tree
-" ==> :help gundo
-let g:gundo_width=45
-Plugin 'sjl/gundo.vim'
 
 " filesystem browser
 " ==> :help nerdtree
@@ -176,10 +153,6 @@ Plugin 'tpope/vim-rake'
 " ==> :help rails
 Plugin 'tpope/vim-rails'
 
-" tag browser for navigating through functions/variables/etc. in a script
-" ==> :help tagbar
-Plugin 'majutsushi/tagbar'
-
 " git integration for vim
 " ==> :help fugitive
 Plugin 'tpope/vim-fugitive'
@@ -192,21 +165,9 @@ Plugin 'vcscommand.vim'
 " ==> :help neocomplcache
 Plugin 'neocomplcache'
 
-" use tab for completion in visual mode
-" ==> :help supertab
-let g:tagbar_left=1
-let g:tagbar_width=45
-Plugin 'ervandew/supertab'
-
 " color schemes
-"Plugin 'railscasts'
 Plugin 'jgdavey/vim-railscasts'
 Plugin 'tpope/vim-vividchalk'
-
-" plugin to interpret and reference indentation levels (with ai, ii, aI, and iI)
-" ==> :help indent-object
-let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "markdown"]
-Plugin 'michaeljsmith/vim-indent-object'
 
 " beautiful status lines
 " ==> :help airline
@@ -234,10 +195,6 @@ Plugin 'tpope/vim-bundler'
 " ==> :help ack
 let g:ackprg = 'ag --nogroup --nocolor --column --follow --smart-case --ignore coverage --ignore log --ignore vcr_cassettes'
 Plugin 'mileszs/ack.vim'
-
-" dispatch to terminal
-" ==> :help dispatch
-Plugin 'tpope/vim-dispatch'
 
 " open files as sudo
 Plugin 'sudo.vim'
@@ -344,20 +301,13 @@ endif
 
 " ===== set up custom keyboard mappings ===== {{{
 
-"nunmap <leader>fef
-"unmap <leader>fc
-"unmap <leader>hs
-
 MapToggle <F2> number
 MapToggle <F3> hlsearch
 MapToggle <F4> wrap
-nmap <F6> <Plug>IndentGuidesToggle
 nmap <F9> <Plug>MarkologyToggle
 
-nmap <silent> <leader>f :GundoHide<CR>:BuffergatorClose<CR>:TagbarClose<CR>:NERDTreeToggle<CR>
-nmap <silent> <leader>b :GundoHide<CR>:NERDTreeClose<CR>:TagbarClose<CR>:BuffergatorToggle<CR>
-nmap <silent> <leader>e :GundoHide<CR>:NERDTreeClose<CR>:BuffergatorClose<CR>:TagbarToggle<CR>
-nmap <silent> <leader>u :NERDTreeClose<CR>:BuffergatorClose<CR>:TagbarClose<CR>:GundoToggle<CR>
+nmap <silent> <leader>f :BuffergatorClose<CR>:NERDTreeToggle<CR>
+nmap <silent> <leader>b :NERDTreeClose<CR>:BuffergatorToggle<CR>
 nmap <leader>r :MRU<CR>
 nmap <leader>M <Plug>MarkologyLocationList
 nmap <leader>m <Plug>MarkologyQuickFix
@@ -367,9 +317,6 @@ map <leader>j :winc j<CR>
 map <leader>k :winc k<CR>
 map <leader>h :winc h<CR>
 map <leader>l :winc l<CR>
-
-" map jk as an alternative to <ESC> for leaving typing mode
-imap jk <ESC>
 "}}}
 
 " vim:fdm=marker:ft=vim
