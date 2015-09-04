@@ -115,6 +115,7 @@ let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2
 let g:NERDTreeWinSize=45
 let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeWinPos="right"
 Plugin 'scrooloose/nerdtree'
 
 " extension to the % matcher to work with more than single characters
@@ -139,6 +140,7 @@ let g:buffergator_autoexpand_on_split=0
 let g:buffergator_suppress_keymaps=1
 let g:buffergator_sort_regime="mru"
 let g:buffergator_split_size=45
+let g:buffergator_viewport_split_policy="R"
 Plugin 'Buffergator'
 
 " ruby extensions
