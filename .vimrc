@@ -100,14 +100,21 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Plugin 'gmarik/vundle'
 
-" functions used by other plugins
-Plugin 'L9'
+" color schemes
+Plugin 'jgdavey/vim-railscasts'
+Plugin 'tpope/vim-vividchalk'
+
+" beautiful status lines
+" ==> :help airline
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+Plugin 'bling/vim-airline'
 
 " automatic insertion of end statements
 Plugin 'tpope/vim-endwise'
 
 " extended . repeat command (now works with more plugins)
-Plugin 'tpope/vim-repeat'
+"Plugin 'tpope/vim-repeat'
 
 " filesystem browser
 " ==> :help nerdtree
@@ -124,11 +131,11 @@ Plugin 'edsono/vim-matchit'
 
 " awesome search tool mapped to C-p
 " ==> :help ctrlp
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = '\.class$'
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_cmd = 'CtrlP getcwd()'
-Plugin 'kien/ctrlp.vim'
+"let g:ctrlp_working_path_mode = 0
+"let g:ctrlp_custom_ignore = '\.class$'
+"let g:ctrlp_follow_symlinks = 1
+"let g:ctrlp_cmd = 'CtrlP getcwd()'
+"Plugin 'kien/ctrlp.vim'
 
 " nifty commenting commands
 " ==> :help nerdcommenter
@@ -159,23 +166,9 @@ Plugin 'tpope/vim-rails'
 " ==> :help fugitive
 Plugin 'tpope/vim-fugitive'
 
-" svn (and others) integration for vim
-" ==> :help vcscommand
-Plugin 'vcscommand.vim'
-
 " autocompletion
 " ==> :help neocomplcache
 Plugin 'neocomplcache'
-
-" color schemes
-Plugin 'jgdavey/vim-railscasts'
-Plugin 'tpope/vim-vividchalk'
-
-" beautiful status lines
-" ==> :help airline
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-Plugin 'bling/vim-airline'
 
 " coldfusion support
 Plugin 'https://github.com/davejlong/cf-utils.vim'
@@ -185,7 +178,6 @@ Plugin 'ap/vim-css-color'
 
 " syntax checking
 " ==> :help syntastic
-"let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_javascript_checkers=[]
 Plugin 'Syntastic'
 
@@ -209,9 +201,6 @@ Plugin 'yegappan/mru'
 " ==> :help emmet
 let g:user_emmet_leader_key = '<c-e>'
 Plugin 'mattn/emmet-vim'
-
-" coffeescript support
-Plugin 'kchmck/vim-coffee-script'
 
 " marks management
 let g:gmarks_names = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
@@ -279,8 +268,8 @@ autocmd FileType crontab setlocal nobackup nowritebackup
 " Mac only
 if g:this_os == "mac gui"
   set popt=left:2pc,right:5pc,top:5pc,bottom:5pc,number:y,portrait:y,paper:tabloid
-  set pfn=Source\ Code\ Pro:h7
-  set gfn=Source\ Code\ Pro:h12
+  set pfn=Monaco:h13
+  set gfn=Monaco:h13
   set lines=92
   set columns=222
 endif
