@@ -10,34 +10,40 @@ if !exists("g:os")
   endif
 endif
 
-" Mac only
-if g:os == "Darwin"
-  set popt=left:2pc,right:5pc,top:5pc,bottom:5pc,number:y,portrait:y,paper:tabloid
-  set pfn=Monaco:h13
-  set gfn=Monaco:h13
-  set lines=92
-  set columns=222
-endif
-
-" Windows only
-if g:os == "Windows"
-  set gfn=Envy_Code_R:h10:cANSI
-  set lines=30
-  set columns=120
-  let g:ruby_path = ":C:\dev\ruby200\bin"
-endif
-
-" Linux only
-if g:os == "Linux"
-  set gfn=Source\ Code\ Pro\ 13
-  set lines=30
-  set columns=120
-endif
-
 if has("gui_running")
   set guioptions=egm
 endif
 
+" Mac only
+if g:os == "Darwin" 
+  if has("gui_running")
+    set popt=left:2pc,right:5pc,top:5pc,bottom:5pc,number:y,portrait:y,paper:tabloid
+    set pfn=Monaco:h13
+    set gfn=Monaco:h13
+    set lines=92
+    set columns=222
+  end
+endif
+
+" Windows only
+if g:os == "Windows"
+  let g:ruby_path = ":C:\dev\ruby200\bin"
+
+  if has("gui_running")
+    set gfn=Envy_Code_R:h10:cANSI
+    set lines=30
+    set columns=120
+  end
+endif
+
+" Linux only
+if g:os == "Linux"
+  if has("gui_running")
+    set gfn=Source\ Code\ Pro\ 13
+    set lines=30
+    set columns=120
+  end
+endif
 " }}}
 
 " ===== Functions ===== {{{
