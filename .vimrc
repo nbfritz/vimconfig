@@ -125,7 +125,7 @@ let g:NERDTreeChDirMode=2
 let g:NERDTreeWinSize=45
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeWinPos="right"
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " extension to the % matcher to work with more than single characters
 " ==> :help matchit
@@ -181,14 +181,14 @@ Plug 'tpope/vim-bundler'
 " ack support
 " ==> :help ack
 let g:ackprg = 'ag --nogroup --nocolor --column --follow --smart-case --ignore coverage --ignore log --ignore vcr_cassettes'
-Plug 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 
 " open files as sudo
 "Plug 'sudo.vim'
 
 " most recently used (MRU) file list
 let MRU_Max_Entries = 30
-Plug 'yegappan/mru'
+Plug 'yegappan/mru', { 'on': 'MRU' }
 
 " emmet html/css accellerators
 " ==> :help emmet
@@ -199,9 +199,9 @@ Plug 'mattn/emmet-vim'
 "Plug 'fontsize'
 
 " word processing support
-Plug 'reedes/vim-pencil'
-Plug 'junegunn/limelight.vim'
-Plug 'junegunn/goyo.vim'
+Plug 'reedes/vim-pencil', { 'on': 'Pencil' }
+Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
+Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
 
 call plug#end()
 "}}}
