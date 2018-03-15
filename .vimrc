@@ -254,6 +254,18 @@ autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~
 "}}}
 
 " ===== set up custom keyboard mappings ===== {{{
+" (http://vim.wikia.com/wiki/Quick_generic_option_toggling)
+function MapToggle(key, opt)
+  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
+  exec 'nnoremap '.a:key.' '.cmd
+  exec 'inoremap '.a:key." \<C-O>".cmd
+endfunction
+command -nargs=+ MapToggle call MapToggle(<f-args>)
+
+MapToggle <F2> number
+MapToggle <F3> hlsearch
+MapToggle <F4> wrap
+
 nmap <silent> <leader>f :NERDTreeToggle<CR>
 nmap <leader>r :MRU<CR>
 
