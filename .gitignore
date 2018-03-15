@@ -1,1 +1,6 @@
 /plugged
+.netrwhist
+/tmp
+!/tmp/backup/.gitkeep
+!/tmp/swap/.gitkeep
+!/tmp/undo/.gitkeep
