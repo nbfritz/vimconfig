@@ -1,40 +1,46 @@
 " Remember, [zo] to open a fold. [zc] to close it. [zR] to open them all. [zM] to close them all.
 
 " ===== OS Detection Code ===== {{{
-let g:this_os = ""
 
-if has("gui_macvim")
-  let g:this_os .= "mac "
-elseif has("win32")
-  let g:this_os .= "windows "
-elseif has("X11")
-  let g:this_os .= "linux "
-end
+if !exists("g:os")
+  if has("win64") || has("win32") || has("win16")
+    let g:os = "Windows"
+  else
+    let g:os = substitute(system('uname'), '\n', '', '')
+  endif
+endif
+
+" Mac only
+if g:os == "Darwin"
+  set popt=left:2pc,right:5pc,top:5pc,bottom:5pc,number:y,portrait:y,paper:tabloid
+  set pfn=Monaco:h13
+  set gfn=Monaco:h13
+  set lines=92
+  set columns=222
+endif
+
+" Windows only
+if g:os == "Windows"
+  set gfn=Envy_Code_R:h10:cANSI
+  set lines=30
+  set columns=120
+  let g:ruby_path = ":C:\dev\ruby200\bin"
+endif
+
+" Linux only
+if g:os == "Linux"
+  set gfn=Source\ Code\ Pro\ 13
+  set lines=30
+  set columns=120
+endif
 
 if has("gui_running")
-  let g:this_os .= "gui"
   set guioptions=egm
-else
-  let g:this_os .= "term"
 endif
 
 " }}}
 
 " ===== Functions ===== {{{
-function! s:MapToggle(key, opt)
- let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
- exec 'nnoremap '.a:key.' '.cmd
- exec 'inoremap '.a:key." \<C-O>".cmd
-endfunction
-command! -nargs=+ MapToggle call s:MapToggle(<f-args>)
-
-function! s:EnableTextWrapMode()
-  set wrap
-  set linebreak
-  set textwidth=102
-  set nolist
-endfunction
-command! WrapText call s:EnableTextWrapMode()
 
 function! s:WritingMode()
   Goyo
@@ -92,29 +98,25 @@ if has('cryptv')
 endif
 "}}}
 
-" ===== bundle configuration ===== {{{
+" ===== plugin configuration ===== {{{
 
-" bundle management
-" ==> :help Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Plugin 'gmarik/vundle'
+call plug#begin()
 
 " color schemes
-Plugin 'jgdavey/vim-railscasts'
-Plugin 'tpope/vim-vividchalk'
+Plug 'jgdavey/vim-railscasts'
+
+" directory diffing
+" ==> :help DirDiff
+"Plug 'will133/vim-dirdiff'
 
 " beautiful status lines
 " ==> :help airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 " automatic insertion of end statements
-Plugin 'tpope/vim-endwise'
-
-" extended . repeat command (now works with more plugins)
-"Plugin 'tpope/vim-repeat'
+Plug 'tpope/vim-endwise'
 
 " filesystem browser
 " ==> :help nerdtree
@@ -123,11 +125,11 @@ let g:NERDTreeChDirMode=2
 let g:NERDTreeWinSize=45
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeWinPos="right"
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " extension to the % matcher to work with more than single characters
 " ==> :help matchit
-Plugin 'edsono/vim-matchit'
+"Plug 'edsono/vim-matchit'
 
 " awesome search tool mapped to C-p
 " ==> :help ctrlp
@@ -139,82 +141,69 @@ Plugin 'edsono/vim-matchit'
 
 " nifty commenting commands
 " ==> :help nerdcommenter
-Plugin 'scrooloose/nerdcommenter'
-
-" buffer switching
-" ==> :help buffergator
-let g:buffergator_autoexpand_on_split=0
-let g:buffergator_suppress_keymaps=1
-let g:buffergator_sort_regime="mru"
-let g:buffergator_split_size=45
-let g:buffergator_viewport_split_policy="R"
-Plugin 'Buffergator'
+Plug 'scrooloose/nerdcommenter'
 
 " ruby extensions
 " ==> :help vim-ruby
-Plugin 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby'
 
 " rake support
 " ==> :help rake
-Plugin 'tpope/vim-rake'
+Plug 'tpope/vim-rake'
 
 " ruby on rails extensions
 " ==> :help rails
-Plugin 'tpope/vim-rails'
+Plug 'tpope/vim-rails'
 
 " git integration for vim
 " ==> :help fugitive
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " autocompletion
 " ==> :help neocomplcache
-Plugin 'neocomplcache'
+"Plug 'neocomplcache'
 
 " coldfusion support
-Plugin 'https://github.com/davejlong/cf-utils.vim'
+Plug 'https://github.com/davejlong/cf-utils.vim'
 
 " css coloring
-Plugin 'ap/vim-css-color'
+Plug 'ap/vim-css-color'
 
 " syntax checking
 " ==> :help syntastic
-let g:syntastic_javascript_checkers=[]
-Plugin 'Syntastic'
+"let g:syntastic_javascript_checkers=[]
+"Plug 'Syntastic'
 
 " bundler support
 " ==> :help bundler
-Plugin 'tpope/vim-bundler'
+Plug 'tpope/vim-bundler'
 
 " ack support
 " ==> :help ack
 let g:ackprg = 'ag --nogroup --nocolor --column --follow --smart-case --ignore coverage --ignore log --ignore vcr_cassettes'
-Plugin 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim'
 
 " open files as sudo
-Plugin 'sudo.vim'
+"Plug 'sudo.vim'
 
 " most recently used (MRU) file list
 let MRU_Max_Entries = 30
-Plugin 'yegappan/mru'
+Plug 'yegappan/mru'
 
 " emmet html/css accellerators
 " ==> :help emmet
 let g:user_emmet_leader_key = '<c-e>'
-Plugin 'mattn/emmet-vim'
-
-" marks management
-let g:gmarks_names = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-let g:markology_enable = 0
-Plugin 'jeetsukumaran/vim-markology'
+Plug 'mattn/emmet-vim'
 
 " dynamic font zooming
-Plugin 'fontsize'
+"Plug 'fontsize'
 
 " word processing support
-Plugin 'reedes/vim-pencil'
-Plugin 'junegunn/limelight.vim'
-Plugin 'junegunn/goyo.vim'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
 
+call plug#end()
 "}}}
 
 " ===== display settings ===== {{{
@@ -252,56 +241,15 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
-autocmd FileType markdown map <F5> :MDP<CR>
-
 autocmd FileType coldfusion,cfscript,cfml set nosmarttab | set expandtab | set indentexpr=
 
 " automatically fold comments in ruby
 autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~'^\\s*#' | exe "normal zM``"
-
-autocmd FileType crontab setlocal nobackup nowritebackup
-
-"}}}
-
-" ===== OS-dependent setup ===== {{{
-
-" Mac only
-if g:this_os == "mac gui"
-  set popt=left:2pc,right:5pc,top:5pc,bottom:5pc,number:y,portrait:y,paper:tabloid
-  set pfn=Monaco:h13
-  set gfn=Monaco:h13
-  set lines=92
-  set columns=222
-endif
-
-" Windows only
-if g:this_os == "windows gui"
-  set gfn=Envy_Code_R:h10:cANSI
-  set lines=30
-  set columns=120
-  let g:ruby_path = ":C:\dev\ruby200\bin"
-endif
-
-" Linux only
-if g:this_os == "linux gui"
-  set gfn=Source\ Code\ Pro\ 13
-  set lines=30
-  set columns=120
-endif
 "}}}
 
 " ===== set up custom keyboard mappings ===== {{{
-
-MapToggle <F2> number
-MapToggle <F3> hlsearch
-MapToggle <F4> wrap
-nmap <F9> <Plug>MarkologyToggle
-
-nmap <silent> <leader>f :BuffergatorClose<CR>:NERDTreeToggle<CR>
-nmap <silent> <leader>b :NERDTreeClose<CR>:BuffergatorToggle<CR>
+nmap <silent> <leader>f :NERDTreeToggle<CR>
 nmap <leader>r :MRU<CR>
-nmap <leader>M <Plug>MarkologyLocationList
-nmap <leader>m <Plug>MarkologyQuickFix
 
 " my alternates to CTRL-W (which is too hard to type) :-)
 map <leader>j :winc j<CR>
