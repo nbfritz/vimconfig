@@ -97,8 +97,6 @@ set hlsearch                      " enable highlighted searching
 set ignorecase                    " searches are case insensitive...
 set smartcase                     " unless an upper case character is sought
 
-let mapleader = ','               " a bunch of keyboard commands use the leader character...
-
 if has('cryptv')
   set cryptmethod=blowfish
 endif
@@ -111,10 +109,6 @@ call plug#begin()
 " color schemes
 Plug 'jgdavey/vim-railscasts'
 Plug 'morhetz/gruvbox'
-
-" directory diffing
-" ==> :help DirDiff
-"Plug 'will133/vim-dirdiff'
 
 " beautiful status lines
 " ==> :help airline
@@ -269,12 +263,6 @@ MapToggle <F4> wrap
 
 nmap <silent> <leader>f :NERDTreeToggle<CR>
 nmap <leader>r :MRU<CR>
-
-" my alternates to CTRL-W (which is too hard to type) :-)
-map <leader>j :winc j<CR>
-map <leader>k :winc k<CR>
-map <leader>h :winc h<CR>
-map <leader>l :winc l<CR>
 "}}}
 
 " vim:fdm=marker:ft=vim
