@@ -110,6 +110,7 @@ call plug#begin()
 
 " color schemes
 Plug 'jgdavey/vim-railscasts'
+Plug 'morhetz/gruvbox'
 
 " directory diffing
 " ==> :help DirDiff
@@ -213,7 +214,7 @@ call plug#end()
 "}}}
 
 " ===== display settings ===== {{{
-colo railscasts       " color scheme
+colo gruvbox " color scheme
 hi NonText term=NONE gui=NONE guifg=#555555
 hi ColorColumn guibg=#333333
 hi! link LineNr NonText
