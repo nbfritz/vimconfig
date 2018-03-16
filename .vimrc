@@ -12,6 +12,7 @@ endif
 
 if has("gui_running")
   set guioptions=egm
+  set background=dark
 endif
 
 " Mac only
@@ -107,7 +108,7 @@ endif
 call plug#begin()
 
 " color schemes
-Plug 'jgdavey/vim-railscasts'
+"Plug 'jgdavey/vim-railscasts'
 Plug 'morhetz/gruvbox'
 
 " beautiful status lines
@@ -208,10 +209,8 @@ call plug#end()
 "}}}
 
 " ===== display settings ===== {{{
-colo gruvbox " color scheme
-hi NonText term=NONE gui=NONE guifg=#555555
-hi ColorColumn guibg=#333333
-hi! link LineNr NonText
+colo gruvbox
+
 set visualbell        " flash instead of beeping
 set ruler             " show cursor position
 set showcmd           " display incomplete commands
