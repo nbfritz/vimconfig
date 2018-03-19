@@ -12,7 +12,6 @@ endif
 
 if has("gui_running")
   set guioptions=egm
-  set background=dark
 endif
 
 " Mac only
@@ -209,6 +208,7 @@ call plug#end()
 "}}}
 
 " ===== display settings ===== {{{
+set background=dark
 colo gruvbox
 
 set visualbell        " flash instead of beeping
