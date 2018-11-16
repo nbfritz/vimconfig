@@ -18,8 +18,8 @@ endif
 if g:os == "Darwin" 
   if has("gui_running")
     set popt=left:2pc,right:5pc,top:5pc,bottom:5pc,number:y,portrait:y,paper:tabloid
-    set pfn=Monaco:h13
-    set gfn=Monaco:h13
+    set pfn=SourceCodePro-Regular:h14
+    set gfn=SourceCodePro-Regular:h14
     set lines=92
     set columns=222
   end
@@ -47,13 +47,6 @@ endif
 " }}}
 
 " ===== Functions ===== {{{
-
-function! s:WritingMode()
-  Goyo
-  SoftPencil
-  Limelight0.6
-endfunction
-command! Write call s:WritingMode()
 
 command! -bar SettingsEdit :split|vi $MYVIMRC
 command! -bar SettingsReload :source $MYVIMRC
@@ -128,17 +121,14 @@ let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeWinPos="right"
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
-" extension to the % matcher to work with more than single characters
-" ==> :help matchit
-"Plug 'edsono/vim-matchit'
-
 " awesome search tool mapped to C-p
 " ==> :help ctrlp
-"let g:ctrlp_working_path_mode = 0
-"let g:ctrlp_custom_ignore = '\.class$'
-"let g:ctrlp_follow_symlinks = 1
-"let g:ctrlp_cmd = 'CtrlP getcwd()'
-"Plugin 'kien/ctrlp.vim'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = '\.class$'
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_cmd = 'CtrlP getcwd()'
+let g:ctrlp_map = '<c-p>'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " nifty commenting commands
 " ==> :help nerdcommenter
@@ -160,20 +150,11 @@ Plug 'tpope/vim-rails'
 " ==> :help fugitive
 Plug 'tpope/vim-fugitive'
 
-" autocompletion
-" ==> :help neocomplcache
-"Plug 'neocomplcache'
-
 " coldfusion support
 Plug 'https://github.com/davejlong/cf-utils.vim'
 
 " css coloring
 Plug 'ap/vim-css-color'
-
-" syntax checking
-" ==> :help syntastic
-"let g:syntastic_javascript_checkers=[]
-"Plug 'Syntastic'
 
 " bundler support
 " ==> :help bundler
@@ -184,12 +165,10 @@ Plug 'tpope/vim-bundler'
 let g:ackprg = 'ag --nogroup --nocolor --column --follow --smart-case --ignore coverage --ignore log --ignore vcr_cassettes'
 Plug 'mileszs/ack.vim', { 'on': 'Ack' }
 
-" open files as sudo
-"Plug 'sudo.vim'
-
 " most recently used (MRU) file list
-let MRU_Max_Entries = 30
-Plug 'yegappan/mru', { 'on': 'MRU' }
+" => :help MRU
+let MRU_Max_Entries = 50
+Plug 'yegappan/mru'
 
 " emmet html/css accellerators
 " ==> :help emmet
@@ -197,15 +176,14 @@ let g:user_emmet_leader_key = '<c-e>'
 Plug 'mattn/emmet-vim'
 
 " dynamic font zooming
-"Plug 'fontsize'
+" ==> :help fontsize
+Plug 'drmikehenry/vim-fontsize'
 
-" word processing support
-Plug 'reedes/vim-pencil', { 'on': 'Pencil' }
-Plug 'junegunn/limelight.vim', { 'on': 'Limelight' }
-Plug 'junegunn/goyo.vim', { 'on': 'Goyo' }
+" mustache templating
+Plug 'mustache/vim-mustache-handlebars'
 
 call plug#end()
-"}}}
+""}}}
 
 " ===== display settings ===== {{{
 set background=dark
