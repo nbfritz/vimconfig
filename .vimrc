@@ -14,26 +14,24 @@ if has("gui_running")
   set guioptions=egm
 endif
 
-" Mac only
-if g:os == "Darwin"
-  if has("gui_running")
-    set popt=left:2pc,right:5pc,top:5pc,bottom:5pc,number:y,portrait:y,paper:tabloid
-    set pfn=SourceCodePro-Regular:h14
-    set gfn=SourceCodePro-Regular:h14
-    set lines=92
-    set columns=222
-  end
-endif
-
 " Windows only
 if g:os == "Windows"
-  let g:ruby_path = ":C:\dev\ruby200\bin"
-
   if has("gui_running")
     set gfn=Envy_Code_R:h10:cANSI
     set lines=30
     set columns=120
-  end
+    set shell=c:\Windows\sysnative\wsl.exe
+    set shellpipe=|
+    set shellredir=>
+    set shellcmdflag=
+    set backupdir=c:/users/nathan.fritz/vimfiles/tmp/backup/ " locate backups
+    set undodir=c:/users/nathan.fritz/vimfiles/tmp/undo/     " locate undo files
+    set directory=C:/Users/nathan.fritz/vimfiles/tmp/swap/   " locate swap files
+  else
+    set backupdir=/mnt/c/users/nathan.fritz/vimfiles/tmp/backup/ " locate backups
+    set undodir=/mnt/c/users/nathan.fritz/vimfiles/tmp/undo/     " locate undo files
+    set directory=/mnt/c/users/nathan.fritz/vimfiles/tmp/swap/   " locate swap files
+  endif
 endif
 
 " Linux only
@@ -42,6 +40,17 @@ if g:os == "Linux"
     set gfn=Source\ Code\ Pro\ 13
     set lines=30
     set columns=120
+  end
+endif
+
+" Mac only
+if g:os == "Darwin"
+  if has("gui_running")
+    set popt=left:2pc,right:5pc,top:5pc,bottom:5pc,number:y,portrait:y,paper:tabloid
+    set pfn=SourceCodePro-Regular:h14
+    set gfn=SourceCodePro-Regular:h14
+    set lines=92
+    set columns=222
   end
 endif
 " }}}
@@ -59,6 +68,8 @@ command! -bar StripTrailingSpaces :%s/\s\+$//ge
 command! -bar StripTabTo2Spaces :%s/\t/  /ge
 command! -bar StripTabTo4Spaces :%s/\t/    /ge
 command! -bar StripAll :StripCarriageReturns|StripTrailingSpaces|StripTabTo2Spaces
+
+command! -bar TidyJQ :%!jq . %
 
 command! -bar Write call pencil#init()
                 \ | call lexical#init()
@@ -243,7 +254,6 @@ autocmd FileType markdown set textwidth=80 | set nowrap
 
 " automatically fold comments in ruby
 autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~'^\\s*#' | exe "normal zM``"
-
 "}}}
 
 " ===== set up custom keyboard mappings ===== {{{
