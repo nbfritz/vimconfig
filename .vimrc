@@ -15,7 +15,7 @@ if has("gui_running")
 endif
 
 " Mac only
-if g:os == "Darwin" 
+if g:os == "Darwin"
   if has("gui_running")
     set popt=left:2pc,right:5pc,top:5pc,bottom:5pc,number:y,portrait:y,paper:tabloid
     set pfn=SourceCodePro-Regular:h14
@@ -60,6 +60,11 @@ command! -bar StripTabTo2Spaces :%s/\t/  /ge
 command! -bar StripTabTo4Spaces :%s/\t/    /ge
 command! -bar StripAll :StripCarriageReturns|StripTrailingSpaces|StripTabTo2Spaces
 
+command! -bar Write call pencil#init()
+                \ | call lexical#init()
+                \ | Goyo 80x80%
+                \ | Limelight
+
 command! -nargs=* Ag :Ack <args>
 
 "}}}
@@ -97,7 +102,7 @@ endif
 
 " ===== plugin configuration ===== {{{
 
-call plug#begin()
+silent! call plug#begin()
 
 " color schemes
 "Plug 'jgdavey/vim-railscasts'
@@ -182,6 +187,19 @@ Plug 'drmikehenry/vim-fontsize'
 " mustache templating
 Plug 'mustache/vim-mustache-handlebars'
 
+" elixir handling
+Plug 'elixir-editors/vim-elixir'
+
+" json schema handling
+" => help Vison
+Plug 'quramy/vison'
+
+" vim for writers
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-lexical'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+
 call plug#end()
 ""}}}
 
@@ -221,8 +239,11 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
 autocmd FileType coldfusion,cfscript,cfml set nosmarttab | set expandtab | set indentexpr=
 
+autocmd FileType markdown set textwidth=80 | set nowrap
+
 " automatically fold comments in ruby
 autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~'^\\s*#' | exe "normal zM``"
+
 "}}}
 
 " ===== set up custom keyboard mappings ===== {{{
