@@ -10,49 +10,21 @@ if !exists("g:os")
   endif
 endif
 
-if has("gui_running")
-  set guioptions=egm
-endif
-
 " Windows only
 if g:os == "Windows"
-  if has("gui_running")
-    set gfn=Envy_Code_R:h10:cANSI
-    set lines=30
-    set columns=120
-    set shell=c:\Windows\sysnative\wsl.exe
-    set shellpipe=|
-    set shellredir=>
-    set shellcmdflag=
-    set backupdir=c:/users/nathan.fritz/vimfiles/tmp/backup/ " locate backups
-    set undodir=c:/users/nathan.fritz/vimfiles/tmp/undo/     " locate undo files
-    set directory=C:/Users/nathan.fritz/vimfiles/tmp/swap/   " locate swap files
-  else
-    set backupdir=/mnt/c/users/nathan.fritz/vimfiles/tmp/backup/ " locate backups
-    set undodir=/mnt/c/users/nathan.fritz/vimfiles/tmp/undo/     " locate undo files
-    set directory=/mnt/c/users/nathan.fritz/vimfiles/tmp/swap/   " locate swap files
-  endif
+  set backupdir=$HOME/.vim/tmp/backup/ " locate backups
+  set undodir=$HOME/.vim/tmp/undo/     " locate undo files
+  set directory=$HOME/.vim/tmp/swap/   " locate swap files
 endif
 
 " Linux only
 if g:os == "Linux"
-  if has("gui_running")
-    set gfn=Source\ Code\ Pro\ 13
-    set lines=30
-    set columns=120
-  end
 endif
 
 " Mac only
 if g:os == "Darwin"
-  if has("gui_running")
-    set popt=left:2pc,right:5pc,top:5pc,bottom:5pc,number:y,portrait:y,paper:tabloid
-    set pfn=SourceCodePro-Regular:h14
-    set gfn=SourceCodePro-Regular:h14
-    set lines=92
-    set columns=222
-  end
 endif
+
 " }}}
 
 " ===== Functions ===== {{{
@@ -78,37 +50,6 @@ command! -bar Write call pencil#init()
 
 command! -nargs=* Ag :Ack <args>
 
-"}}}
-
-" ===== general settings ===== {{{
-set nocompatible      " run in VIM rather than VI mode
-set encoding=utf8
-set number
-
-" load in preset configuration for MS windows
-source $VIMRUNTIME/mswin.vim
-behave mswin
-
-" enable backspacing over everything in insert mode
-set backspace=indent,eol,start
-
-set backupdir=~/.vim/tmp/backup// " locate backups
-set directory=~/.vim/tmp/swap//   " locate swap files
-set noswapfile                    " no swap files
-set backup                        " enable backup versions
-set mouse=a                       " enable mouse
-
-set splitbelow                    " open new splits below
-set splitright                    " open new vsplits to the right
-
-syntax on                         " enable syntax highlighting
-set hlsearch                      " enable highlighted searching
-set ignorecase                    " searches are case insensitive...
-set smartcase                     " unless an upper case character is sought
-
-if has('cryptv')
-  set cryptmethod=blowfish
-endif
 "}}}
 
 " ===== plugin configuration ===== {{{
@@ -214,6 +155,35 @@ Plug 'junegunn/goyo.vim'
 call plug#end()
 ""}}}
 
+" ===== general settings ===== {{{
+set nocompatible      " run in VIM rather than VI mode
+set encoding=utf8
+set number
+
+" load in preset configuration for MS windows
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
+" enable backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+set noswapfile                    " no swap files
+set backup                        " enable backup versions
+set mouse=a                       " enable mouse
+
+set splitbelow                    " open new splits below
+set splitright                    " open new vsplits to the right
+
+syntax on                         " enable syntax highlighting
+set hlsearch                      " enable highlighted searching
+set ignorecase                    " searches are case insensitive...
+set smartcase                     " unless an upper case character is sought
+
+if has('cryptv')
+  set cryptmethod=blowfish
+endif
+"}}}
+
 " ===== display settings ===== {{{
 set background=dark
 colo gruvbox
@@ -238,6 +208,23 @@ set expandtab         " replace tabs with spaces
 set smartindent       " autoindent following lines
 "}}}
 
+" ===== set up custom keyboard mappings ===== {{{
+" (http://vim.wikia.com/wiki/Quick_generic_option_toggling)
+function MapToggle(key, opt)
+  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
+  exec 'nnoremap '.a:key.' '.cmd
+  exec 'inoremap '.a:key." \<C-O>".cmd
+endfunction
+command -nargs=+ MapToggle call MapToggle(<f-args>)
+
+MapToggle <F2> number
+MapToggle <F3> hlsearch
+MapToggle <F4> wrap
+
+nmap <silent> <leader>f :NERDTreeToggle<CR>
+nmap <leader>r :MRU<CR>
+"}}}
+"
 " ===== autocommand setup ===== {{{
 filetype off          " disable filetype detection
 filetype indent on    " enable filetype-specific indenting
@@ -254,23 +241,6 @@ autocmd FileType markdown set textwidth=80 | set nowrap
 
 " automatically fold comments in ruby
 autocmd FileType ruby,eruby set foldmethod=expr | set foldexpr=getline(v:lnum)=~'^\\s*#' | exe "normal zM``"
-"}}}
-
-" ===== set up custom keyboard mappings ===== {{{
-" (http://vim.wikia.com/wiki/Quick_generic_option_toggling)
-function MapToggle(key, opt)
-  let cmd = ':set '.a:opt.'! \| set '.a:opt."?\<CR>"
-  exec 'nnoremap '.a:key.' '.cmd
-  exec 'inoremap '.a:key." \<C-O>".cmd
-endfunction
-command -nargs=+ MapToggle call MapToggle(<f-args>)
-
-MapToggle <F2> number
-MapToggle <F3> hlsearch
-MapToggle <F4> wrap
-
-nmap <silent> <leader>f :NERDTreeToggle<CR>
-nmap <leader>r :MRU<CR>
 "}}}
 
 " vim:fdm=marker:ft=vim
