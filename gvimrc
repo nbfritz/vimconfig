@@ -1,3 +1,5 @@
+" for more information see :help nbf
+
 " ---[ Visual Options ]--- {{{
 set guioptions=eg
 

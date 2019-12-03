@@ -1,7 +1,10 @@
 :NotesEdit	nfnotes.txt	/*:NotesEdit*
-:NotesReload	nfnotes.txt	/*:NotesReload*
-:SettingsEdit	nfnotes.txt	/*:SettingsEdit*
-:SettingsReload	nfnotes.txt	/*:SettingsReload*
+:NotesIndex	nfnotes.txt	/*:NotesIndex*
+:Reload	nfnotes.txt	/*:Reload*
+:Settings	nfnotes.txt	/*:Settings*
+:Write	nfnotes.txt	/*:Write*
+nbf	nfnotes.txt	/*nbf*
 nfcommands	nfnotes.txt	/*nfcommands*
 nfkeys	nfnotes.txt	/*nfkeys*
 nfnotes.txt	nfnotes.txt	/*nfnotes.txt*
+nfplugins	nfnotes.txt	/*nfplugins*

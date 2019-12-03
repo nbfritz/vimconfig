@@ -1,23 +1,25 @@
-*nfnotes.txt*	For Vim version 7.3	Last change: 2013 April 21
+*nfnotes.txt* / *nbf*   For Vim version 7.3	Last change: 2019 December 3
 
 Read the |help-writing| help page for more information on help file formatting.
+Remember to run :NotesIndex after editing this document!
 
 ==============================================================================
-Keyboard Shortcuts                                      *nfkeys* 
+Keyboard Shortcuts                                      *nfkeys*
 
-Function Keys~
+Visual Toggles~
 \n                      toggle line numbers
 \h                      toggle highlighted search
 \w                      toggle line wrap
+\x                      toggle writing mode
 
 Window Navigation~
-CTRL-w h (or ,h)        move to leftward pane
-CTRL-w j (or ,j)        move to leftward pane
-CTRL-w k (or ,k)        move to leftward pane
-CTRL-w l (or ,l)        move to leftward pane
+CTRL-w h                move to leftward pane
+CTRL-w j                move to leftward pane
+CTRL-w k                move to leftward pane
+CTRL-w l                move to leftward pane
 CTRL-w =                resize two panes to equal sizes
 
-Side Pane~
+Panels~
 \f                      open file list
 \r                      open most recently used
 
@@ -34,8 +36,30 @@ Searching~
 #                       like * but backwards
 
 ==============================================================================
-Custom Commands                                        *nfcommands* 
+Custom Commands                                        *nfcommands*
 
-:Settings                Edit the startup settings file
-*:Reload*                  Reload the startup settings file
+*:Settings*               edit the startup settings file
+*:Reload*                 reload the startup settings file
+*:NotesEdit*              edit this help document
+*:NotesIndex*             reindex this help document
+*:Write*                  toggle writing mode
+
+
+==============================================================================
+Plugins                                                *nfplugins*
+
+plugged                 simple plugin manager
+|airline|                 fancy status bars
+|emmet|                   fast HTML insertion
+|nerdtree|                file browser panel
+|fugitive|                git support
+|mru|                     most recently used files
+|fontsize|                font scaling with keyboard shortcuts
+pencil                  writing helpers
+lexical                 spellcheck/thesaurus
+|goyo|                    focused writing mode
+|limelight|               current paragraph highlighting
+
+
+
  vim:tw=78:ts=8:ft=help:norl:

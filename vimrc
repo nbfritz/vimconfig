@@ -1,3 +1,5 @@
+" for more information see :help nbf
+
 " ---[ Setup ]--- {{{
 " Browser detection
 " allows for conditional checks against g:os, which will be
@@ -139,7 +141,7 @@ MapToggle <leader>w wrap
 command! -bar Settings :split $MYVIMRC|vsplit $MYGVIMRC
 command! -bar Reload :source $MYVIMRC|source $MYGVIMRC
 command! -bar NotesEdit :vi +set\ modifiable $VIMFILES/doc/nfnotes.txt
-command! -bar NotesReload :helptags ~$VIMFILES/doc
+command! -bar NotesIndex :helptags $VIMFILES/doc|echo "Notes Re-indexed!"
 
 function! ToggleWrite()
   Goyo
