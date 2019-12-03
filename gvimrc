@@ -5,8 +5,14 @@ set guioptions=eg
 
 if g:os == 'Windows'
   set gfn=Source_Code_Variable:h12:cANSI
-  set columns=120
-  set lines=40
+  
+  if &columns < 120
+    set columns=120
+  endif
+
+  if &lines < 40
+    set lines=40
+  endif
 endif
 " }}}
 

@@ -7,10 +7,12 @@ Remember to run :NotesIndex after editing this document!
 Keyboard Shortcuts                                      *nfkeys*
 
 Visual Toggles~
-\n                      toggle line numbers
-\h                      toggle highlighted search
-\w                      toggle line wrap
-\x                      toggle writing mode
+\\n                     toggle line numbers
+\\h                     toggle highlighted search
+\\w                     toggle line wrap
+\\x                     toggle writing mode
+\\+                     increase font size
+\\-                     decrease font size
 
 Window Navigation~
 CTRL-w h                move to leftward pane
