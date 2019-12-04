@@ -11,6 +11,7 @@ Visual Toggles~
 \\h                     toggle highlighted search
 \\w                     toggle line wrap
 \\x                     toggle writing mode
+\\m                     toggle the GUI's menu bar
 \\+                     increase font size
 \\-                     decrease font size
 
