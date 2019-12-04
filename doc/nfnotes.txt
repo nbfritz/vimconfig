@@ -27,6 +27,7 @@ CTRL-w =                resize two panes to equal sizes
 Panels~
 \f                      open file list
 \r                      open most recently used
+CTRL-P                  open project search
 
 Folding~
 zc                      close folds
@@ -45,7 +46,7 @@ Custom Commands                                        *nfcommands*
 
 *:Settings*               edit the startup settings file
 *:SettingsConsole*        edit the startup settings with git support!
-*:Reload*                 reload the startup settings file
+*:SettingsReload*         reload the startup settings file
 *:NotesEdit*              edit this help document
 *:NotesIndex*             reindex this help document
 *:Write*                  toggle writing mode
@@ -65,6 +66,7 @@ pencil                  writing helpers
 lexical                 spellcheck/thesaurus
 |goyo|                    focused writing mode
 |limelight|               current paragraph highlighting
+|ctrlp|                   file/project search
 
 
 This document can be updated! Read the |help-writing| help page for more information 

@@ -72,7 +72,7 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 
 " ctrl-p project search (:help ctrlp)
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 call plug#end()
 " }}}
@@ -152,7 +152,6 @@ nmap <silent> <Leader>0 <Plug>FontsizeDefault
 " }}}
 
 " ---[ Commands ]--- {{{
-command! -bar Reload :source $MYVIMRC|source $MYGVIMRC
 command! -bar NotesEdit :vi +set\ modifiable $VIMFILES/doc/nfnotes.txt
 command! -bar NotesIndex :helptags $VIMFILES/doc|echo "Notes Re-indexed!"
 
@@ -179,6 +178,8 @@ function! SettingsConsole()
   Gstatus
 endfunction
 command! -bar SettingsConsole call SettingsConsole()
+
+command! -bar SettingsReload :source $MYVIMRC|source $MYGVIMRC
 " }}}
 
 " ---[ OS Specific Setup ]--- {{{
