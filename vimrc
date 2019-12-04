@@ -71,6 +71,9 @@ Plug 'junegunn/limelight.vim'
 " focused writing mode (:help goyo)
 Plug 'junegunn/goyo.vim'
 
+" ctrl-p project search (:help ctrlp)
+Plug 'kien/ctrlp.vim'
+
 call plug#end()
 " }}}
 
