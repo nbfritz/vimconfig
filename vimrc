@@ -21,7 +21,7 @@ endif
 
 " (http://vim.wikia.com/wiki/Quick_generic_option_toggling)
 function! Toggle(opt)
-  execute ':set '.a:opt.'! | set '.a:opt."?"
+  execute ':set '.a:opt.'! | set '.a:opt.'?'
 endfunction
 command! -nargs=+ Toggle call Toggle(<f-args>)
 " }}}
@@ -85,6 +85,7 @@ set backup                          " enable backup versions
 set mouse=a                         " enable mouse
 set splitbelow                      " open new splits below
 set splitright                      " open new vsplits to the right
+set nowrap                          " start with wrapping disabled
 
 syntax on                           " enable syntax highlighting
 set nohlsearch                      " disable highlighted searching
@@ -116,9 +117,9 @@ set laststatus=2                    " always show a status line
 set shortmess+=I                    " disable the welcome screen
 set linespace=0                     " use default 0 linespaces even on windows
 set colorcolumn=100                 " show a vertical line at the 100 character mark
-set fillchars=vert:┊,fold:┄         " fancy up the separators
+set fillchars=vert:┃,fold:━         " fancy up the separators
 set list                            " show hidden characters (next line sets chars)
-set listchars=tab:⇒\ ,trail:‗,extends:>,precedes:<
+set listchars=tab:⇒\ ,trail:‗,extends:⮞,precedes:⮜
 " }}}
 
 " ---[ Keyboard Mapping ]--- {{{
