@@ -148,7 +148,6 @@ nmap <silent> <Leader>0 <Plug>FontsizeDefault
 " }}}
 
 " ---[ Commands ]--- {{{
-command! -bar Settings :split $MYVIMRC|vsplit $MYGVIMRC
 command! -bar Reload :source $MYVIMRC|source $MYGVIMRC
 command! -bar NotesEdit :vi +set\ modifiable $VIMFILES/doc/nfnotes.txt
 command! -bar NotesIndex :helptags $VIMFILES/doc|echo "Notes Re-indexed!"
@@ -159,6 +158,23 @@ function! ToggleWrite()
   TogglePencil
 endfunction
 command! -bar Write call ToggleWrite()
+
+function! Settings()
+  if &modified
+    split $MYVIMRC
+  else
+    e $MYVIMRC
+  endif
+  vsplit $MYGVIMRC
+endfunction
+command! -bar Settings call Settings()
+
+function! SettingsConsole()
+  lcd $VIMFILES
+  Settings
+  Gstatus
+endfunction
+command! -bar SettingsConsole call SettingsConsole()
 " }}}
 
 " ---[ OS Specific Setup ]--- {{{
