@@ -44,6 +44,7 @@ Searching~
 Custom Commands                                        *nfcommands*
 
 *:Settings*               edit the startup settings file
+*:SettingsConsole*        edit the startup settings with git support!
 *:Reload*                 reload the startup settings file
 *:NotesEdit*              edit this help document
 *:NotesIndex*             reindex this help document
