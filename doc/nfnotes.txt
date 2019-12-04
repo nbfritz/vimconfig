@@ -1,19 +1,21 @@
 *nfnotes.txt* / *nbf*   For Vim version 7.3	Last change: 2019 December 3
 
-Read the |help-writing| help page for more information on help file formatting.
-Remember to run :NotesIndex after editing this document!
+See |help.txt| for the normal F1 help screen. 
+CTRL-[ while the cursor is on a blue link will jump to that page.
 
 ==============================================================================
 Keyboard Shortcuts                                      *nfkeys*
 
 Visual Toggles~
-\\n                     toggle line numbers
-\\h                     toggle highlighted search
-\\w                     toggle line wrap
-\\x                     toggle writing mode
-\\m                     toggle the GUI's menu bar
-\\+                     increase font size
-\\-                     decrease font size
+\n                      toggle line numbers
+\h                      toggle highlighted search
+\w                      toggle line wrap
+\x                      toggle writing mode
+\m                      toggle the GUI's menu bar
+\+                      increase font size
+\-                      decrease font size
+\0                      reset font size
+\=                      enter font size edit mode
 
 Window Navigation~
 CTRL-w h                move to leftward pane
@@ -64,5 +66,8 @@ lexical                 spellcheck/thesaurus
 |limelight|               current paragraph highlighting
 
 
+This document can be updated! Read the |help-writing| help page for more information 
+on help file formatting conventions. Remember to run :NotesIndex after editing this 
+document!
 
  vim:tw=78:ts=8:ft=help:norl:

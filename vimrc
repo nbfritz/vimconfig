@@ -109,6 +109,7 @@ colo gruvbox                        " set color scheme
 set visualbell                      " flash instead of beeping
 set ruler                           " show cursor position
 set showcmd                         " display incomplete commands
+set wildmenu                        " enable tab-completion menu in command mode
 set history=50                      " 50 lines of command line history
 set cmdheight=1                     " command line is two lines tall
 set laststatus=2                    " always show a status line
@@ -121,19 +122,29 @@ set listchars=tab:⇒\ ,trail:‗,extends:>,precedes:<
 " }}}
 
 " ---[ Keyboard Mapping ]--- {{{
+" <F1> to open my custom notes
 " \f to open file list
 " \r to open most recently used
-" \\l to toggle line numbering
-" \\h to toggle highlighted search
-" \\l to toggle line wrap
-" \\x to toggle writer's mode
+" \n to toggle line numbering
+" \h to toggle highlighted search
+" \w to toggle line wrap
+" \x to toggle writer's mode
+" \+ to increase font size
+" \- to decrease font size
+" \0 to reset font size
+" \= to enter font size edit mode
 
+nmap <F1> :help nfnotes<CR>
 nmap <silent> <leader>f :NERDTreeToggle<CR>
 nmap <silent> <leader>r :MRU<CR>
-nmap <silent> <leader><leader>x :Write<CR>
-nmap <silent> <leader><leader>n :Toggle number<CR>
-nmap <silent> <leader><leader>h :Toggle hlsearch<CR>
-nmap <silent> <leader><leader>w :Toggle wrap<CR>
+nmap <silent> <leader>x :Write<CR>
+nmap <silent> <leader>n :Toggle number<CR>
+nmap <silent> <leader>h :Toggle hlsearch<CR>
+nmap <silent> <leader>w :Toggle wrap<CR>
+nmap <silent> <Leader>= <Plug>FontsizeBegin
+nmap <silent> <Leader>+ <Plug>FontsizeInc
+nmap <silent> <Leader>- <Plug>FontsizeDec
+nmap <silent> <Leader>0 <Plug>FontsizeDefault
 " }}}
 
 " ---[ Commands ]--- {{{

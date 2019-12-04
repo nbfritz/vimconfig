@@ -28,9 +28,16 @@ endif
 " }}}
 
 " ---[ Keyboard Mapping ]--- {{{
-" \\m to toggle the GUI's menu bar
+" \m to toggle the GUI's menu bar
 
-nmap <silent> <leader><leader>m :ToggleMenu<CR>
+nmap <silent> <leader>m :ToggleMenu<CR>
+" }}}
+
+" ---[ Menu Tweaks ]--- {{{
+anoremenu 9999.5 &Help.&NF\ Notes<Tab><F1> :help nfnotes<CR>
+aunmenu &Help.&Overview<Tab><F1>
+anoremenu 9999.10 &Help.&Overview :help<CR>
+
 " }}}
 
 " vim:fdm=marker:ft=vim
