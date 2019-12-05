@@ -82,7 +82,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 
 " nice markdown support (:help vim-markdown)
-Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-markdown'
 
 call plug#end()
 " }}}
