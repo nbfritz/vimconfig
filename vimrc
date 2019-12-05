@@ -74,6 +74,10 @@ Plug 'junegunn/goyo.vim'
 " ctrl-p project search (:help ctrlp)
 Plug 'ctrlpvim/ctrlp.vim'
 
+" indent guide
+let g:indent_guides_guide_size=1
+Plug 'nathanaelkane/vim-indent-guides'
+
 call plug#end()
 " }}}
 
@@ -132,6 +136,7 @@ set listchars=tab:⇒\ ,trail:‗,extends:⮞,precedes:⮜
 " \n to toggle line numbering
 " \h to toggle highlighted search
 " \w to toggle line wrap
+" \i to toggle indentation highlights
 " \x to toggle writer's mode
 " \+ to increase font size
 " \- to decrease font size
@@ -145,6 +150,7 @@ nmap <silent> <leader>x :Write<CR>
 nmap <silent> <leader>n :Toggle number<CR>
 nmap <silent> <leader>h :Toggle hlsearch<CR>
 nmap <silent> <leader>w :Toggle wrap<CR>
+nmap <silent> <leader>i :IndentGuidesToggle<CR>
 nmap <silent> <Leader>= <Plug>FontsizeBegin
 nmap <silent> <Leader>+ <Plug>FontsizeInc
 nmap <silent> <Leader>- <Plug>FontsizeDec

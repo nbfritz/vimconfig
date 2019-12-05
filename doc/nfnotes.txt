@@ -12,6 +12,7 @@ Visual Toggles~
 \w                      toggle line wrap
 \x                      toggle writing mode
 \m                      toggle the GUI's menu bar
+\i                      toggle indentation guides
 \+                      increase font size
 \-                      decrease font size
 \0                      reset font size
@@ -67,6 +68,7 @@ lexical                 spellcheck/thesaurus
 |goyo|                    focused writing mode
 |limelight|               current paragraph highlighting
 |ctrlp|                   file/project search
+vim-indent-guides       handy display of indentations
 
 
 This document can be updated! Read the |help-writing| help page for more information 
