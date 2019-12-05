@@ -42,6 +42,10 @@ Searching~
 *                       search for the word under the cursor
 #                       like * but backwards
 
+Commands~
+CTRL-E,                 expand an emmet abbreviation
+
+
 ==============================================================================
 Custom Commands                                        *nfcommands*
 
@@ -52,6 +56,7 @@ Custom Commands                                        *nfcommands*
 *:NotesIndex*             reindex this help document
 *:Write*                  toggle writing mode
 
+*:Tabularize*             see the |tabular| plugin for details
 
 ==============================================================================
 Plugins                                                *nfplugins*
@@ -69,6 +74,8 @@ lexical                 spellcheck/thesaurus
 |limelight|               current paragraph highlighting
 |ctrlp|                   file/project search
 vim-indent-guides       handy display of indentations
+|tabular|                 indentation and alignment
+|vim-markdown|            markdown syntax
 
 
 This document can be updated! Read the |help-writing| help page for more information 

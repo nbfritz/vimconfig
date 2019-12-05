@@ -78,6 +78,12 @@ Plug 'ctrlpvim/ctrlp.vim'
 let g:indent_guides_guide_size=1
 Plug 'nathanaelkane/vim-indent-guides'
 
+" indentation and alignment helpers (:help tabular)
+Plug 'godlygeek/tabular'
+
+" nice markdown support (:help vim-markdown)
+Plug 'plasticboy/vim-markdown'
+
 call plug#end()
 " }}}
 
