@@ -31,10 +31,10 @@ silent! call plug#begin('$VIMFILES/plugged')
 
 " Color Schemes
 "Plug 'morhetz/gruvbox'
-Plug 'ajh17/spacegray.vim'
+"Plug 'ajh17/spacegray.vim'
 "Plug 'tomasr/molokai'
 "Plug 'alessandroyorba/despacio'
-"Plug 'jonathanfilip/vim-lucius'
+Plug 'jonathanfilip/vim-lucius'
 
 " status lines (:help airline)
 let g:airline_left_sep='>'
@@ -122,7 +122,7 @@ set directory=$VIMFILES/tmp/swap    " swap file path
 
 " ---[ Visual Options ]--- {{{
 set background=dark                 " set dark backround coloring
-colo spacegray                      " set color scheme
+colo lucius                         " set color scheme
 
 set visualbell                      " flash instead of beeping
 set ruler                           " show cursor position
