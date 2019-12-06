@@ -15,7 +15,7 @@ command! ToggleMenu call ToggleMenu()
 set guioptions=eg
 
 if g:os == 'Windows'
-  set gfn=Source_Code_Variable:h12:cANSI
+  set gfn=Hack:h11:cANSI:qDRAFT
   
   if &columns < 120
     set columns=120

@@ -37,14 +37,15 @@ silent! call plug#begin('$VIMFILES/plugged')
 Plug 'jonathanfilip/vim-lucius'
 
 " status lines (:help airline)
-let g:airline_left_sep='>'
-let g:airline_right_sep='<'
+"let g:airline_left_sep='>'
+"let g:airline_right_sep='<'
+let g:airline_powerline_fonts=1
 Plug 'bling/vim-airline'
 
 " filesystem browser (:help nerdtree)
 let g:NERDTreeShowBookmarks=1
 let g:NERDTreeChDirMode=2
-let g:NERDTreeWinSize=45
+let g:NERDTreeWinSize=30
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeWinPos="right"
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
