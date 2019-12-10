@@ -16,7 +16,19 @@ set guioptions=eg
 
 if g:os == 'Windows'
   set gfn=Hack:h11:cANSI:qDRAFT
-  
+
+  if &columns < 120
+    set columns=120
+  endif
+
+  if &lines < 40
+    set lines=40
+  endif
+endif
+
+if g:os == 'Darwin'
+  set gfn=Hack-Regular:h13
+
   if &columns < 120
     set columns=120
   endif
