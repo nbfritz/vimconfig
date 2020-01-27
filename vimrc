@@ -87,7 +87,9 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 
 " nice markdown support (:help vim-markdown)
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-markdown', { 'do': { -> mkdp#util#install() } }
+Plug 'iamcco/markdown-preview.nvim'
+let g:mkdp_auto_close=0
 
 call plug#end()
 " }}}
@@ -197,6 +199,13 @@ endfunction
 command! -bar SettingsConsole call SettingsConsole()
 
 command! -bar SettingsReload :source $MYVIMRC|source $MYGVIMRC
+" }}}
+
+" ---[ Filetype configuration ]--- {{{
+autocmd FileType mkd,markdown call pencil#init()
+                           \| call mkdp#util#open_preview_page()
+autocmd BufEnter *.md set cursorline
+autocmd BufLeave *.md set nocursorline
 " }}}
 
 " ---[ OS Specific Setup ]--- {{{
