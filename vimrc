@@ -181,6 +181,11 @@ function! ToggleWrite()
 endfunction
 command! -bar Write call ToggleWrite()
 
+function! FormatWithJQ()
+  %!jq "."
+endfunction
+command! -bar JsonCleanup call FormatWithJQ()
+
 function! Settings()
   if &modified
     split $MYVIMRC
