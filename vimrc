@@ -204,11 +204,12 @@ endfunction
 command! -bar SettingsConsole call SettingsConsole()
 
 command! -bar SettingsReload :source $MYVIMRC|source $MYGVIMRC
+
+command! -bar Preview call mkdp#util#open_preview_page()
 " }}}
 
 " ---[ Filetype configuration ]--- {{{
 autocmd FileType mkd,markdown call pencil#init()
-                           \| call mkdp#util#open_preview_page()
 autocmd BufEnter *.md set cursorline
 autocmd BufLeave *.md set nocursorline
 " }}}
