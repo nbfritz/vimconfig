@@ -65,6 +65,7 @@ Plug 'mattn/emmet-vim'
 Plug 'drmikehenry/vim-fontsize'
 
 " vim for writers (:help pencil)
+let g:pencil#wrapModeDefault = 'soft'
 Plug 'reedes/vim-pencil'
 
 " spell-check/thesaurus for writing (:help lexical)
@@ -209,7 +210,6 @@ command! -bar Preview call mkdp#util#open_preview_page()
 " }}}
 
 " ---[ Filetype configuration ]--- {{{
-autocmd FileType mkd,markdown call pencil#init()
 autocmd BufEnter *.md set cursorline
 autocmd BufLeave *.md set nocursorline
 " }}}
