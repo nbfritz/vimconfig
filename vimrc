@@ -92,6 +92,12 @@ Plug 'tpope/vim-markdown', { 'do': { -> mkdp#util#install() } }
 Plug 'iamcco/markdown-preview.nvim'
 let g:mkdp_auto_close=0
 
+" nerdtree git integration
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" multi-cursor support
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+
 call plug#end()
 " }}}
 
