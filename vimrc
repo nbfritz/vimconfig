@@ -206,7 +206,7 @@ command! -bar Settings call Settings()
 function! SettingsConsole()
   lcd $VIMFILES
   Settings
-  Gstatus
+  Git
 endfunction
 command! -bar SettingsConsole call SettingsConsole()
 
