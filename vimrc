@@ -36,6 +36,17 @@ silent! call plug#begin('$VIMFILES/plugged')
 "Plug 'alessandroyorba/despacio'
 Plug 'jonathanfilip/vim-lucius'
 
+
+Plug 'vim-scripts/AnsiEsc.vim'
+Plug 'tyru/open-browser.vim'
+Plug 'aklt/plantuml-syntax'
+Plug 'weirongxu/plantuml-previewer.vim'
+au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
+    \  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
+    \  1,
+    \  0
+    \)
+
 " status lines (:help airline)
 "let g:airline_left_sep='>'
 "let g:airline_right_sep='<'
@@ -213,6 +224,14 @@ command! -bar SettingsConsole call SettingsConsole()
 command! -bar SettingsReload :source $MYVIMRC|source $MYGVIMRC
 
 command! -bar Preview call mkdp#util#open_preview_page()
+
+" use AnsiEsc to color code ansi characters, but re-color some difficult to
+" read colors
+function! AnsiRecolor()
+  %s/\[34m/[33m/ge
+endfunction
+command! -bar AnsiRecolor call AnsiRecolor()
+command! -bar -bang Ansi :AnsiRecolor|AnsiEsc<bang>
 " }}}
 
 " ---[ Filetype configuration ]--- {{{
