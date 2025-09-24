@@ -88,11 +88,19 @@ Plug 'junegunn/limelight.vim'
 Plug 'junegunn/goyo.vim'
 
 " ctrl-p project search (:help ctrlp)
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+  let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+  "let g:ctrlp_use_caching = 0
+endif
 Plug 'ctrlpvim/ctrlp.vim'
 
 " indent guide (:help indent-guides)
 let g:indent_guides_guide_size=1
 Plug 'preservim/vim-indent-guides'
+
+" rspec helper (:help rspec)
+Plug 'thoughtbot/vim-rspec'
 
 call plug#end()
 " }}}
@@ -146,31 +154,39 @@ set listchars=tab:⇒\ ,trail:‗,extends:⮞,precedes:⮜
 " }}}
 
 " ---[ Keyboard Mapping ]--- {{{
+
 " <F1> to open my custom notes
+nmap <F1> :help nfnotes<CR>
+
 " \f to open file list
 " \r to open most recently used
+nmap <silent> <leader>f :NERDTreeToggle<CR>
+nmap <silent> <leader>r :MRU<CR>
+
 " \n to toggle line numbering
-" \h to toggle highlighted search
 " \w to toggle line wrap
+" \h to toggle highlighted search
 " \i to toggle indentation highlights
 " \x to toggle writer's mode
+nmap <silent> <leader>n :set number!<CR>
+nmap <silent> <leader>h :set hlsearch!<CR>
+nmap <silent> <leader>x :Write<CR>
+nmap <silent> <leader>w :set wrap!<CR>
+nmap <silent> <leader>i :IndentGuidesToggle<CR>
+
 " \+ to increase font size
 " \- to decrease font size
 " \0 to reset font size
-" \= to enter font size edit mode
-
-nmap <F1> :help nfnotes<CR>
-nmap <silent> <leader>f :NERDTreeToggle<CR>
-nmap <silent> <leader>r :MRU<CR>
-nmap <silent> <leader>x :Write<CR>
-nmap <silent> <leader>n :set number!<CR>
-nmap <silent> <leader>h :set hlsearch!<CR>
-nmap <silent> <leader>w :set wrap!<CR>
-nmap <silent> <leader>i :IndentGuidesToggle<CR>
-nmap <silent> <Leader>= <Plug>FontsizeBegin
 nmap <silent> <Leader>+ <Plug>FontsizeInc
 nmap <silent> <Leader>- <Plug>FontsizeDec
 nmap <silent> <Leader>0 <Plug>FontsizeDefault
+
+" \t to run current spec file
+" \s to run nearest spec
+" \l to run last spec
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
 " }}}
 
 " ---[ Commands ]--- {{{
