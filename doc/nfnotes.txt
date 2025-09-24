@@ -1,7 +1,7 @@
 *nfnotes.txt* / *nbf*   For Vim version 7.3	Last change: 2019 December 3
 
 See |help.txt| for the normal F1 help screen. 
-CTRL-[ while the cursor is on a blue link will jump to that page.
+CTRL-] while the cursor is on a link will jump to that page.
 
 ==============================================================================
 Keyboard Shortcuts                                      *nfkeys*
@@ -42,28 +42,23 @@ Searching~
 *                       search for the word under the cursor
 #                       like * but backwards
 
-Commands~
-CTRL-E,                 expand an emmet abbreviation
-
 
 ==============================================================================
 Custom Commands                                        *nfcommands*
 
 *:Settings*               edit the startup settings file
-*:SettingsConsole*        edit the startup settings with git support!
 *:SettingsReload*         reload the startup settings file
 *:NotesEdit*              edit this help document
 *:NotesIndex*             reindex this help document
 *:Write*                  toggle writing mode
-
-*:Tabularize*             see the |tabular| plugin for details
+*:JsonCleanup*            reformat file with jq
+*:Ansi*                   apply ANSI color codes to file
 
 ==============================================================================
 Plugins                                                *nfplugins*
 
 plugged                 simple plugin manager
 |airline|                 fancy status bars
-|emmet|                   fast HTML insertion
 |nerdtree|                file browser panel
 |fugitive|                git support
 |mru|                     most recently used files
@@ -74,8 +69,6 @@ lexical                 spellcheck/thesaurus
 |limelight|               current paragraph highlighting
 |ctrlp|                   file/project search
 vim-indent-guides       handy display of indentations
-|tabular|                 indentation and alignment
-|vim-markdown|            markdown syntax
 
 
 This document can be updated! Read the |help-writing| help page for more information 

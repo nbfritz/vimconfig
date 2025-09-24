@@ -1,6 +1,7 @@
 " for more information see :help nbf
 
 " ---[ Setup ]--- {{{
+"
 " Browser detection
 " allows for conditional checks against g:os, which will be
 " one of 'Windows', 'Linux', 'Darwin' (for mac)
@@ -19,27 +20,28 @@ elseif isdirectory(expand('$HOME/.vim'))
   let $VIMFILES = expand('$HOME/.vim')
 endif
 
-" (http://vim.wikia.com/wiki/Quick_generic_option_toggling)
-function! Toggle(opt)
-  execute ':set '.a:opt.'! | set '.a:opt.'?'
-endfunction
-command! -nargs=+ Toggle call Toggle(<f-args>)
 " }}}
 
 " ---[ Plugins ]--- {{{
 silent! call plug#begin('$VIMFILES/plugged')
 
 " Color Schemes
+Plug 'jonathanfilip/vim-lucius'
 "Plug 'morhetz/gruvbox'
 "Plug 'ajh17/spacegray.vim'
 "Plug 'tomasr/molokai'
 "Plug 'alessandroyorba/despacio'
-Plug 'jonathanfilip/vim-lucius'
 
 
+" ANSI escape code handling (:help AnsiEsc)
+" :AnsiEsc to apply ANSI color codes in file
 Plug 'vim-scripts/AnsiEsc.vim'
-Plug 'tyru/open-browser.vim'
+
+" PlantUML syntax
 Plug 'aklt/plantuml-syntax'
+
+" PlantUML preview in browser (:help plantuml-previewer)
+" :PlantumlOpen to open the current plantuml diagram in a browser
 Plug 'weirongxu/plantuml-previewer.vim'
 au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
     \  matchlist(system('cat `which plantuml` | grep plantuml.jar'), '\v.*\s[''"]?(\S+plantuml\.jar).*'),
@@ -47,10 +49,10 @@ au FileType plantuml let g:plantuml_previewer#plantuml_jar_path = get(
     \  0
     \)
 
-" status lines (:help airline)
+" Pretty status lines (:help airline)
+let g:airline_powerline_fonts=1
 "let g:airline_left_sep='>'
 "let g:airline_right_sep='<'
-let g:airline_powerline_fonts=1
 Plug 'bling/vim-airline'
 
 " filesystem browser (:help nerdtree)
@@ -59,7 +61,10 @@ let g:NERDTreeChDirMode=2
 let g:NERDTreeWinSize=30
 let g:NERDTreeQuitOnOpen=1
 let g:NERDTreeWinPos="right"
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
+
+" nerdtree git integration
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " git integration for vim (:help fugitive)
 Plug 'tpope/vim-fugitive'
@@ -68,19 +73,13 @@ Plug 'tpope/vim-fugitive'
 let MRU_Max_Entries = 50
 Plug 'yegappan/mru'
 
-" emmet html/css accellerators (:help emmet)
-let g:user_emmet_leader_key = '<c-e>'
-Plug 'mattn/emmet-vim'
-
 " dynamic font zooming (:help fontsize)
+" \\+,+,... and \\-,-,... to increase and decrease fonts
 Plug 'drmikehenry/vim-fontsize'
 
 " vim for writers (:help pencil)
 let g:pencil#wrapModeDefault = 'soft'
 Plug 'reedes/vim-pencil'
-
-" spell-check/thesaurus for writing (:help lexical)
-Plug 'reedes/vim-lexical'
 
 " highlight active paragraph (:help limelight)
 Plug 'junegunn/limelight.vim'
@@ -91,23 +90,9 @@ Plug 'junegunn/goyo.vim'
 " ctrl-p project search (:help ctrlp)
 Plug 'ctrlpvim/ctrlp.vim'
 
-" indent guide
+" indent guide (:help indent-guides)
 let g:indent_guides_guide_size=1
-Plug 'nathanaelkane/vim-indent-guides'
-
-" indentation and alignment helpers (:help tabular)
-Plug 'godlygeek/tabular'
-
-" nice markdown support (:help vim-markdown)
-Plug 'tpope/vim-markdown', { 'do': { -> mkdp#util#install() } }
-Plug 'iamcco/markdown-preview.nvim'
-let g:mkdp_auto_close=0
-
-" nerdtree git integration
-Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" multi-cursor support
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'preservim/vim-indent-guides'
 
 call plug#end()
 " }}}
@@ -178,9 +163,9 @@ nmap <F1> :help nfnotes<CR>
 nmap <silent> <leader>f :NERDTreeToggle<CR>
 nmap <silent> <leader>r :MRU<CR>
 nmap <silent> <leader>x :Write<CR>
-nmap <silent> <leader>n :Toggle number<CR>
-nmap <silent> <leader>h :Toggle hlsearch<CR>
-nmap <silent> <leader>w :Toggle wrap<CR>
+nmap <silent> <leader>n :set number!<CR>
+nmap <silent> <leader>h :set hlsearch!<CR>
+nmap <silent> <leader>w :set wrap!<CR>
 nmap <silent> <leader>i :IndentGuidesToggle<CR>
 nmap <silent> <Leader>= <Plug>FontsizeBegin
 nmap <silent> <Leader>+ <Plug>FontsizeInc
@@ -214,24 +199,14 @@ function! Settings()
 endfunction
 command! -bar Settings call Settings()
 
-function! SettingsConsole()
-  lcd $VIMFILES
-  Settings
-  Git
-endfunction
-command! -bar SettingsConsole call SettingsConsole()
-
 command! -bar SettingsReload :source $MYVIMRC|source $MYGVIMRC
-
-command! -bar Preview call mkdp#util#open_preview_page()
 
 " use AnsiEsc to color code ansi characters, but re-color some difficult to
 " read colors
 function! AnsiRecolor()
   %s/\[34m/[33m/ge
 endfunction
-command! -bar AnsiRecolor call AnsiRecolor()
-command! -bar -bang Ansi :AnsiRecolor|AnsiEsc<bang>
+command! -bar -bang Ansi call AnsiRecolor()|:AnsiEsc<bang>
 " }}}
 
 " ---[ Filetype configuration ]--- {{{
